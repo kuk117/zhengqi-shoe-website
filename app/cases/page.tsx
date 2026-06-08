@@ -52,7 +52,7 @@ export default function CasesPage() {
   return (
     <div className="min-h-screen bg-white">
       {/* 顶部蓝色横幅：加高高度，文字彻底下沉，远离顶部 */}
-      <section className="relative h-[55vh] min-h-[460px] overflow-hidden bg-gradient-to-br from-blue-700 via-blue-600 to-cyan-500">
+      <section className="relative h-[55vh] min-h-[460px] overflow-hidden bg-gradient-to-b from-blue-50 via-blue-100/50 to-white">
         {/* 网格背景层 */}
         <div className="absolute inset-0 opacity-10">
           <div className="absolute inset-0" style={{
@@ -63,11 +63,11 @@ export default function CasesPage() {
         
         {/* 垂直靠底部对齐，超大下内边距 pb-36，文字整体下移 */}
         <div className="absolute inset-0 flex items-center px-12 lg:px-16 relative z-10" style={{paddingTop: '8rem'}}>
-          <div className="max-w-4xl">
-            <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight text-white mb-6 drop-shadow-lg animate-fadeInUp">
+          <div className="max-w-4xl text-center">
+            <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight text-gray-900 mb-6  animate-fadeInUp">
               成功<span className="text-yellow-300">案例</span>
             </h1>
-            <p className="text-2xl md:text-3xl text-white/95 font-semibold animate-fadeInUp" style={{ animationDelay: '200ms' }}>
+            <p className="text-2xl md:text-3xl text-gray-900/95 font-semibold animate-fadeInUp" style={{ animationDelay: '200ms' }}>
               真实客户成果，数据说话
             </p>
           </div>
@@ -92,8 +92,8 @@ export default function CasesPage() {
                     sizes="(max-width: 1024px) 100vw, 33vw"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent"></div>
-                  <div className="absolute bottom-0 left-0 right-0 p-5 text-white">
-                    <h3 className="text-lg md:text-xl font-bold drop-shadow-lg">{caseItem.company}</h3>
+                  <div className="absolute bottom-0 left-0 right-0 p-5 text-gray-900">
+                    <h3 className="text-lg md:text-xl font-bold ">{caseItem.company}</h3>
                   </div>
                 </div>
 
@@ -123,7 +123,7 @@ export default function CasesPage() {
             <div className="bg-white rounded-2xl shadow-xl p-10 md:p-14 border-4 border-blue-100 inline-block max-w-2xl animate-fadeInUp" style={{ animationDelay: '600ms' }}>
               <h3 className="text-2xl md:text-3xl font-bold text-gray-900 mb-5">想成为下一个成功案例？</h3>
               <p className="text-lg text-gray-700 mb-8">免费预约专家诊断，获取专属改善方案</p>
-              <a href="/contact" className="inline-block px-10 py-4 bg-gradient-to-r from-blue-700 via-blue-600 to-cyan-500 text-white rounded-xl font-bold text-lg hover:from-blue-800 hover:to-cyan-600 transition transform hover:scale-105 shadow-xl">
+              <a href="/contact" className="inline-block px-10 py-4 bg-gradient-to-r from-blue-700 via-blue-600 to-cyan-500 text-gray-900 rounded-xl font-bold text-lg hover:from-blue-800 hover:to-cyan-600 transition transform hover:scale-105 shadow-xl">
                 📞 免费咨询 →
               </a>
             </div>
@@ -133,3 +133,6 @@ export default function CasesPage() {
     </div>
   );
 }
+
+
+

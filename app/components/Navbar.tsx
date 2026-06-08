@@ -15,10 +15,10 @@ export default function Navbar() {
   ];
 
   return (
-    <nav className="bg-white/90 backdrop-blur-md shadow-sm fixed w-full z-40 top-0 transition-all duration-300 border-b border-blue-100">
+    <nav className="bg-white shadow-sm border-b border-gray-100 shadow-lg fixed w-full z-40 top-0 transition-all duration-300 border-b border-blue-500/30">
       <div className="container mx-auto px-4 py-4 flex justify-between items-center">
         <Link href="/" className="group flex items-center gap-3">
-          <div className="w-10 h-10 bg-gradient-to-br from-blue-600 to-blue-400 rounded-xl flex items-center justify-center text-white font-bold text-lg shadow-lg group-hover:shadow-blue-300 transition-all duration-300 group-hover:scale-110">
+          <div className="w-10 h-10 bg-gradient-to-br from-blue-600 to-blue-400 rounded-xl flex items-center justify-center text-gray-900 font-bold text-lg shadow-lg group-hover:shadow-blue-300 transition-all duration-300 group-hover:scale-110">
             正
           </div>
           <div className="hidden sm:block">
@@ -34,8 +34,8 @@ export default function Navbar() {
               href={item.path}
               className={`relative px-4 py-2 rounded-lg font-medium text-sm transition-all duration-300 group ${
                 pathname === item.path
-                  ? 'text-blue-600 bg-blue-50'
-                  : 'text-gray-600 hover:text-blue-600 hover:bg-blue-50/50'
+                  ? 'text-yellow-300 bg-blue-50'
+                  : 'text-gray-600 hover:text-yellow-300 hover:bg-blue-50/50'
               }`}
             >
               <span className="mr-1.5"></span>
@@ -60,6 +60,8 @@ export default function Navbar() {
     </nav>
   );
 }
+
+
 
 
 

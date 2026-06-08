@@ -20,7 +20,7 @@ export default function ContactPage() {
   return (
     <div className="min-h-screen bg-white">
       {/* 首栏Banner 优化布局+分层入场动画 */}
-      <section className="relative h-[42vh] min-h-[380px] overflow-hidden bg-gradient-to-br from-blue-700 via-blue-600 to-cyan-500">
+      <section className="relative h-[42vh] min-h-[380px] overflow-hidden bg-gradient-to-b from-blue-50 via-blue-100/50 to-white">
         {/* 网格纹理背景 */}
         <div className="absolute inset-0 opacity-10">
           <div
@@ -34,18 +34,18 @@ export default function ContactPage() {
 
         {/* 左右分栏文字布局 对齐设计图 */}
         <div className="absolute inset-0 flex items-center px-12 lg:px-16 z-10">
-          <div className="w-full flex items-center justify-between">
+          <div className="w-full flex flex-col items-center justify-center text-center">
             {/* 左侧主标题 */}
             <div className="animate-fadeInUp">
-              <h1 className="text-5xl md:text-6xl font-bold text-white drop-shadow-lg">
-                联系<span className="text-orange-500">我们</span>
+              <h1 className="text-5xl md:text-6xl font-bold text-gray-900 ">
+                联系<span className="text-blue-500">我们</span>
               </h1>
             </div>
 
             {/* 右侧宣传文案 大屏可见 */}
             <div className="hidden md:block text-right animate-fadeInRight" style={{ animationDelay: '250ms' }}>
-              <p className="text-xl md:text-2xl font-bold text-white mb-2 drop-shadow-md">免费诊断咨询 · 开启升级之旅</p>
-              <p className="text-base text-white/95 font-semibold drop-shadow-sm">24小时内回复 | 专业团队 | 严格保密</p>
+              <p className="text-xl md:text-2xl font-bold text-gray-900 mb-2 drop-shadow-md">免费诊断咨询 · 开启升级之旅</p>
+              <p className="text-base text-gray-900/95 font-semibold drop-shadow-sm">24小时内回复 | 专业团队 | 严格保密</p>
             </div>
           </div>
         </div>
@@ -109,7 +109,7 @@ export default function ContactPage() {
 
                 <button
                   type="submit"
-                  className="w-full py-4 bg-gradient-to-r from-blue-700 via-blue-600 to-cyan-500 text-white rounded-xl font-bold text-lg hover:from-blue-800 hover:to-cyan-600 transition-all duration-300 transform hover:scale-105 active:scale-[0.97] shadow-xl hover:shadow-2xl"
+                  className="w-full py-4 bg-gradient-to-r from-blue-700 via-blue-600 to-cyan-500 text-gray-900 rounded-xl font-bold text-lg hover:from-blue-800 hover:to-cyan-600 transition-all duration-300 transform hover:scale-105 active:scale-[0.97] shadow-xl hover:shadow-2xl"
                 >
                   提交留言 →
                 </button>
@@ -150,7 +150,7 @@ export default function ContactPage() {
                   sizes="(max-width: 1024px) 100vw, 50vw"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end p-5">
-                  <div className="text-white">
+                  <div className="text-gray-900">
                     <p className="font-black text-lg mb-1">📍 我们的位置</p>
                     <p className="text-sm opacity-90">欢迎莅临参观指导</p>
                   </div>
@@ -162,7 +162,7 @@ export default function ContactPage() {
       </section>
 
       {/* 底部Footer */}
-      <footer className="bg-gradient-to-br from-blue-700 via-blue-600 to-cyan-500 text-white py-10">
+      <footer className="bg-gradient-to-b from-blue-50 via-blue-100/50 to-white text-gray-900 py-10">
         <div className="container mx-auto px-8 text-center animate-fadeInUp" style={{ animationDelay: '500ms' }}>
           <p className="text-lg font-semibold mb-2">莆田市正奇企业管理咨询有限公司</p>
           <p className="text-sm opacity-90">© 2024 版权所有 | 懂鞋业，更懂制造升级</p>
@@ -171,3 +171,6 @@ export default function ContactPage() {
     </div>
   );
 }
+
+
+

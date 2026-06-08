@@ -8,7 +8,7 @@ export default function AboutPage() {
   return (
     <div className="min-h-screen bg-white">
       {/* 首栏 38vh - 统一深蓝渐变 */}
-      <section className="relative h-[48vh] min-h-[420px] overflow-hidden bg-gradient-to-br from-blue-700 via-blue-600 to-cyan-500">
+      <section className="relative h-[48vh] min-h-[420px] overflow-hidden bg-gradient-to-b from-blue-50 via-blue-100/50 to-white">
         <div className="absolute inset-0">
           <Image 
             src="https://images.unsplash.com/photo-1557804506-669a67965ba0?w=1920&h=1080&fit=crop&q=80"
@@ -25,7 +25,7 @@ export default function AboutPage() {
         <div className="absolute inset-0 flex items-center pl-14 pr-8 relative z-10">
           <div className="max-w-4xl">
             
-            <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold text-gray-900 mb-6 drop-shadow-lg animate-fadeInUp" style={{animationDelay: '200ms'}}>
+            <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold text-gray-900 mb-6  animate-fadeInUp" style={{animationDelay: '200ms'}}>
               关于<span className="text-orange-500">正奇</span>咨询
             </h1>
             
@@ -95,7 +95,7 @@ export default function AboutPage() {
             </div>
           </div>
 
-          <div className="bg-gradient-to-r from-blue-700 via-blue-600 to-cyan-500 text-white rounded-3xl p-12 md:p-16 text-center shadow-2xl">
+          <div className="bg-gradient-to-r from-blue-700 via-blue-600 to-cyan-500 text-gray-900 rounded-3xl p-12 md:p-16 text-center shadow-2xl">
             <h3 className="text-3xl md:text-4xl font-bold mb-6">想要了解更多？</h3>
             <p className="mb-10 text-xl text-blue-100">联系我们获取详细的公司介绍和成功案例</p>
             <Link href="/contact" className="inline-block px-10 py-4 bg-white text-blue-700 rounded-xl font-bold text-xl hover:bg-blue-50 transition transform hover:scale-105 shadow-xl animate-pulse-slow">
@@ -107,5 +107,7 @@ export default function AboutPage() {
     </div>
   );
 }
+
+
 
 
