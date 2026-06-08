@@ -7,7 +7,7 @@ import Image from 'next/image';
 export default function AboutPage() {
   return (
     <div className="min-h-screen bg-white">
-      {/* 首栏 38vh - 统一深蓝渐变 */}
+      {/* 首栏 - 浅蓝渐变 */}
       <section className="relative h-[48vh] min-h-[420px] overflow-hidden bg-gradient-to-b from-blue-50 via-blue-100/50 to-white">
         <div className="absolute inset-0">
           <Image 
@@ -20,13 +20,13 @@ export default function AboutPage() {
           />
         </div>
         
-        <div className="absolute left-0 top-0 bottom-0 w-2 bg-gradient-to-b from-yellow-400 via-orange-400 to-red-400"></div>
+        <div className="absolute left-0 top-0 bottom-0 w-1.5 bg-gray-300"></div>
         
         <div className="absolute inset-0 flex items-center pl-14 pr-8 relative z-10">
           <div className="max-w-4xl">
             
-            <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold text-gray-900 mb-6  animate-fadeInUp" style={{animationDelay: '200ms'}}>
-              关于<span className="text-orange-500">正奇</span>咨询
+            <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold text-gray-900 mb-6 animate-fadeInUp" style={{animationDelay: '200ms'}}>
+              关于<span className="text-gray-900">正奇</span>咨询
             </h1>
             
             <p className="text-2xl md:text-3xl text-gray-800 mb-10 font-semibold animate-fadeInUp" style={{animationDelay: '400ms'}}>
@@ -63,16 +63,16 @@ export default function AboutPage() {
               </div>
             </div>
             
-            <div className="relative animate-fadeInRight">
+            <div className="relative animate-fadeInRight group overflow-hidden rounded-3xl">
               <Image 
                 src="https://images.unsplash.com/photo-1553877522-43269d4ea984?w=800&h=600&fit=crop&q=80"
                 alt=""
                 width={800}
                 height={600}
-                className="rounded-3xl shadow-2xl border-4 border-gray-100 w-full object-cover"
+                className="rounded-3xl shadow-2xl border-4 border-gray-100 w-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
                 sizes="(max-width: 1024px) 100vw, 50vw"
               />
-              
+              <div className="absolute inset-0 bg-gradient-to-t from-gray-900/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-3xl"></div>
             </div>
           </div>
 
@@ -95,11 +95,11 @@ export default function AboutPage() {
             </div>
           </div>
 
-          <div className="bg-gradient-to-r from-blue-700 via-blue-600 to-cyan-500 text-gray-900 rounded-3xl p-12 md:p-16 text-center shadow-2xl">
-            <h3 className="text-3xl md:text-4xl font-bold mb-6">想要了解更多？</h3>
-            <p className="mb-10 text-xl text-blue-100">联系我们获取详细的公司介绍和成功案例</p>
-            <Link href="/contact" className="inline-block px-10 py-4 bg-white text-blue-700 rounded-xl font-bold text-xl hover:bg-blue-50 transition transform hover:scale-105 shadow-xl animate-pulse-slow">
-              📞 联系我们 →
+          <div className="bg-gray-50 rounded-3xl p-12 md:p-16 text-center shadow-xl border border-gray-100 animate-fadeInUp">
+            <h3 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">想要了解更多？</h3>
+            <p className="mb-10 text-xl text-gray-600">联系我们获取详细的公司介绍和成功案例</p>
+            <Link href="/contact" className="inline-block px-10 py-4 bg-gray-900 text-white rounded-xl font-bold text-xl hover:bg-gray-800 transition transform hover:scale-105 shadow-xl">
+              联系我们 →
             </Link>
           </div>
         </div>
@@ -107,7 +107,3 @@ export default function AboutPage() {
     </div>
   );
 }
-
-
-
-

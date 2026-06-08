@@ -51,30 +51,35 @@ export default function CasesPage() {
 
   return (
     <div className="min-h-screen bg-white">
-      {/* 顶部蓝色横幅：加高高度，文字彻底下沉，远离顶部 */}
-      <section className="relative h-[55vh] min-h-[460px] overflow-hidden bg-gradient-to-b from-blue-50 via-blue-100/50 to-white">
-        {/* 网格背景层 */}
-        <div className="absolute inset-0 opacity-10">
-          <div className="absolute inset-0" style={{
-            backgroundImage: 'linear-gradient(rgba(255,255,255,.3) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.3) 1px, transparent 1px)',
-            backgroundSize: '40px 40px'
-          }}></div>
-        </div>
-        
-        {/* 垂直靠底部对齐，超大下内边距 pb-36，文字整体下移 */}
-        <div className="absolute inset-0 flex items-center px-12 lg:px-16 relative z-10" style={{paddingTop: '8rem'}}>
-          <div className="max-w-4xl text-center">
-            <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight text-gray-900 mb-6  animate-fadeInUp">
-              成功<span className="text-yellow-300">案例</span>
+           <section className="relative h-[42vh] min-h-[380px] overflow-hidden bg-gradient-to-b from-blue-50 via-blue-100/50 to-white">
+        <div className="absolute inset-0 flex items-center justify-center z-10 px-6">
+          <div className="text-center max-w-4xl">
+            <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold text-gray-900 mb-5 animate-fadeInUp">
+              成功<span className="text-gray-900">案例</span>
             </h1>
-            <p className="text-2xl md:text-3xl text-gray-900/95 font-semibold animate-fadeInUp" style={{ animationDelay: '200ms' }}>
+            <p className="text-xl md:text-2xl text-gray-600 font-semibold animate-fadeInUp" style={{ animationDelay: '200ms' }}>
               真实客户成果，数据说话
             </p>
+            <p className="text-base text-gray-500 mt-4 animate-fadeInUp" style={{ animationDelay: '400ms' }}>
+              累计服务200+鞋服企业，平均提升生产效率35%，降低库存成本28%
+            </p>
+            <div className="mt-8 flex justify-center gap-8 animate-fadeInUp" style={{ animationDelay: '600ms' }}>
+              <div className="text-center">
+                
+                <div className="text-sm text-gray-500">服务企业</div>
+              </div>
+              <div className="text-center">
+                
+                <div className="text-sm text-gray-500">效率提升</div>
+              </div>
+              <div className="text-center">
+                
+                <div className="text-sm text-gray-500">客户满意度</div>
+              </div>
+            </div>
           </div>
         </div>
-        
-        {/* 底部渐变过渡，柔和衔接下方白色区块 */}
-        <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-white via-white/90 to-transparent"></div>
+        <div className="absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-t from-white to-transparent"></div>
       </section>
 
       {/* 案例卡片区域 无改动 */}
@@ -133,6 +138,7 @@ export default function CasesPage() {
     </div>
   );
 }
+
 
 
 

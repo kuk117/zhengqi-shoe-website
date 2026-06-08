@@ -51,12 +51,12 @@ export default function ServicesPage() {
       desc: '长期陪伴式驻厂落地，全周期持续改善保障，专属顾问一对一跟进，落地效果可量化验证',
       fullWidth: true
     }
-  ]
+  ];
 
   return (
-    <div className="min-h-screen bg-slate-50">
-      {/* 顶部Banner 主色改为品牌蓝，不再纯黑灰 */}
-      <section className="relative h-[40vh] min-h-[340px] overflow-hidden bg-gradient-to-r from-blue-700 to-blue-600">
+    <div className="min-h-screen bg-white">
+      {/* 顶部Banner 改为浅蓝色渐变 */}
+      <section className="relative h-[40vh] min-h-[340px] overflow-hidden bg-gradient-to-b from-blue-50 via-blue-100/50 to-white">
         <div className="absolute inset-0 opacity-10">
           <div
             className="absolute inset-0"
@@ -68,15 +68,18 @@ export default function ServicesPage() {
         </div>
         <div className="absolute inset-0 flex items-center justify-center z-10 px-6">
           <div className="text-center max-w-4xl">
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-4">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-4 animate-fadeInUp">
               "4+1" 企业进化升级体系
             </h1>
-            <p className="text-lg md:text-xl text-blue-100">
+            <p className="text-lg md:text-xl text-gray-600 font-semibold animate-fadeInUp" style={{animationDelay: '200ms'}}>
               精益 · 敏捷 · 利润 · 数字化 · 陪跑落地
+            </p>
+            <p className="text-base text-gray-500 mt-3 animate-fadeInUp" style={{animationDelay: '400ms'}}>
+              为莆田鞋服企业量身定制的全链路管理解决方案
             </p>
           </div>
         </div>
-        <div className="absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-t from-slate-50 to-transparent"></div>
+        <div className="absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-t from-white to-transparent"></div>
       </section>
 
       {/* 服务卡片区域 */}
@@ -130,11 +133,11 @@ export default function ServicesPage() {
             ))}
           </div>
 
-          {/* 底部按钮用品牌蓝色，告别纯黑 */}
+          {/* 底部按钮用深灰色 */}
           <div className="mt-16 text-center">
             <Link
               href="/contact"
-              className="inline-block px-8 py-3 bg-blue-700 text-gray-900 rounded-lg font-medium hover:bg-blue-800 transition-colors shadow-md"
+              className="inline-block px-8 py-3 bg-gray-900 text-white rounded-lg font-medium hover:bg-gray-800 transition-colors shadow-md"
             >
               咨询具体方案
             </Link>
@@ -144,6 +147,3 @@ export default function ServicesPage() {
     </div>
   );
 }
-
-
-
