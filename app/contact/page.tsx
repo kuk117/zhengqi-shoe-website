@@ -152,7 +152,7 @@ export default function ContactPage() {
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end p-5">
                   <div className="text-gray-900">
                     <p className="font-black text-lg mb-1">📍 我们的位置</p>
-                    <p className="text-sm opacity-90">欢迎莅临参观指导</p>
+                    
                   </div>
                 </div>
               </div>

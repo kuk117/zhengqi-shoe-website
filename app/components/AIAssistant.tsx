@@ -154,7 +154,29 @@ export default function AIAssistant() {
               </div>
               <button onClick={() => setIsOpen(false)} className="w-7 h-7 rounded-full bg-white/20 hover:bg-white/30 flex items-center justify-center transition">
                 ✕
-              </button>
+              </button>cd D:\agent\网站\shoe-website
+$content = Get-Content "app\about\page.tsx" -Raw -Encoding utf8
+
+# 删除 ABOUT US 英文标签
+$content = $content -replace '\s*<div className="inline-flex items-center gap-3 bg-white/90 backdrop-blur-md px-6 py-2\.5 rounded-full mb-5 shadow-xl animate-fadeInUp">\s*<span className="w-3 h-3 bg-yellow-400 rounded-full animate-pulse"></span>\s*<span className="text-gray-900 font-bold text-base tracking-wide">ABOUT US</span>\s*</div>', ''
+
+# 删除建筑物图标
+$content = $content -replace '\s*<div className="ml-auto hidden xl:block animate-float">\s*<div className="w-36 h-36 bg-white/85 backdrop-blur-md rounded-3xl border-4 border-white shadow-2xl flex items-center justify-center text-7xl">\s*🏢\s*</div>\s*</div>', ''
+
+Set-Content -Path "app\about\page.tsx" -Value $content -Encoding utf8
+Write-Host "DONE" -ForegroundColor Green
+cd D:\agent\网站\shoe-website
+$content = Get-Content "app\about\page.tsx" -Raw -Encoding utf8
+
+# 删除 ABOUT US 英文标签
+$content = $content -replace '\s*<div className="inline-flex items-center gap-3 bg-white/90 backdrop-blur-md px-6 py-2\.5 rounded-full mb-5 shadow-xl animate-fadeInUp">\s*<span className="w-3 h-3 bg-yellow-400 rounded-full animate-pulse"></span>\s*<span className="text-gray-900 font-bold text-base tracking-wide">ABOUT US</span>\s*</div>', ''
+
+# 删除建筑物图标
+$content = $content -replace '\s*<div className="ml-auto hidden xl:block animate-float">\s*<div className="w-36 h-36 bg-white/85 backdrop-blur-md rounded-3xl border-4 border-white shadow-2xl flex items-center justify-center text-7xl">\s*🏢\s*</div>\s*</div>', ''
+
+Set-Content -Path "app\about\page.tsx" -Value $content -Encoding utf8
+Write-Host "DONE" -ForegroundColor Green
+
             </div>
             <p className={`text-xs flex items-center gap-2 ${isTyping ? 'text-yellow-200' : 'text-green-200'}`}>
               <span className={`w-2 h-2 rounded-full ${isTyping ? 'bg-yellow-400 animate-pulse' : 'bg-green-400'} animate-pulse`}></span>
