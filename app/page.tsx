@@ -14,14 +14,35 @@ export default function Home() {
   const paths = [
     {
       title: '先看问题',
+      icon: (
+        <svg viewBox="0 0 48 48" className="h-8 w-8" fill="none" aria-hidden="true">
+          <path d="M10 12h28v20H10z" stroke="currentColor" strokeWidth="3" strokeLinejoin="round" />
+          <path d="M15 38h18M24 32v6M17 19h14M17 25h8" stroke="currentColor" strokeWidth="3" strokeLinecap="round" />
+        </svg>
+      ),
+      tone: 'from-sky-500 to-blue-600',
       desc: '用现场走查和数据访谈，找出交付、效率、品质、成本里的关键堵点。',
     },
     {
       title: '再排路径',
+      icon: (
+        <svg viewBox="0 0 48 48" className="h-8 w-8" fill="none" aria-hidden="true">
+          <path d="M12 14h8v8h-8zM28 14h8v8h-8zM12 30h8v8h-8zM28 30h8v8h-8z" stroke="currentColor" strokeWidth="3" strokeLinejoin="round" />
+          <path d="M20 18h8M16 22v8M32 22v8M20 34h8" stroke="currentColor" strokeWidth="3" strokeLinecap="round" />
+        </svg>
+      ),
+      tone: 'from-teal-500 to-cyan-600',
       desc: '把改善动作拆成负责人、时间表和验证指标，让团队知道下一步怎么做。',
     },
     {
       title: '最后复盘',
+      icon: (
+        <svg viewBox="0 0 48 48" className="h-8 w-8" fill="none" aria-hidden="true">
+          <path d="M12 34V14M22 34V22M32 34V10M40 38H8" stroke="currentColor" strokeWidth="3" strokeLinecap="round" />
+          <path d="M12 14c6 8 13 12 24 8" stroke="currentColor" strokeWidth="3" strokeLinecap="round" />
+        </svg>
+      ),
+      tone: 'from-amber-500 to-orange-600',
       desc: '围绕订单表现和经营结果复盘，保留有效做法，沉淀为管理机制。',
     },
   ];
@@ -85,14 +106,26 @@ export default function Home() {
             {paths.map((item, i) => (
               <div
                 key={item.title}
-                className="group animate-scaleIn rounded-lg border border-slate-200 bg-slate-50 p-7 transition duration-300 hover:-translate-y-2 hover:bg-white hover:shadow-xl hover:shadow-slate-200"
+                className="group relative animate-scaleIn overflow-hidden rounded-lg border border-slate-200 bg-white p-7 shadow-sm transition duration-300 hover:-translate-y-2 hover:border-sky-200 hover:shadow-xl hover:shadow-slate-200"
                 style={{ animationDelay: `${i * 130}ms` }}
               >
-                <div className="mb-8 flex h-12 w-12 items-center justify-center rounded-lg bg-white text-lg font-black text-sky-700 shadow-sm transition duration-300 group-hover:scale-110 group-hover:bg-sky-600 group-hover:text-white">
-                  {i + 1}
+                <div className={`absolute inset-x-0 top-0 h-1.5 bg-gradient-to-r ${item.tone}`}></div>
+                <div className="mb-8 flex items-start justify-between gap-4">
+                  <div className={`grid h-16 w-16 place-items-center rounded-lg bg-gradient-to-br ${item.tone} text-white shadow-lg shadow-slate-200 transition duration-300 group-hover:scale-110 group-hover:-translate-y-1`}>
+                    {item.icon}
+                  </div>
+                  <div className="text-4xl font-black text-slate-100 transition duration-300 group-hover:text-sky-100">
+                    0{i + 1}
+                  </div>
                 </div>
                 <h3 className="text-2xl font-black text-slate-950">{item.title}</h3>
                 <p className="mt-4 text-base leading-7 text-slate-600">{item.desc}</p>
+                <div className="mt-7 h-1.5 overflow-hidden rounded-full bg-slate-100">
+                  <div
+                    className={`h-full rounded-full bg-gradient-to-r ${item.tone} transition-all duration-700 group-hover:w-full`}
+                    style={{ width: `${62 + i * 14}%` }}
+                  ></div>
+                </div>
               </div>
             ))}
           </div>

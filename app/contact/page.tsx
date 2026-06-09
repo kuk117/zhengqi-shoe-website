@@ -12,6 +12,53 @@ export default function ContactPage() {
     message: ''
   });
 
+  const contactMethods = [
+    {
+      title: '公司地址',
+      content: '福建省莆田市荔城区XX路XX号',
+      color: 'bg-sky-50 text-sky-700',
+      icon: (
+        <svg viewBox="0 0 48 48" className="h-7 w-7" fill="none" aria-hidden="true">
+          <path d="M24 42s14-12.4 14-25A14 14 0 1 0 10 17c0 12.6 14 25 14 25Z" stroke="currentColor" strokeWidth="3" strokeLinejoin="round" />
+          <path d="M24 22a5 5 0 1 0 0-10 5 5 0 0 0 0 10Z" stroke="currentColor" strokeWidth="3" />
+        </svg>
+      ),
+    },
+    {
+      title: '联系电话',
+      content: '138-XXXX-XXXX',
+      color: 'bg-teal-50 text-teal-700',
+      icon: (
+        <svg viewBox="0 0 48 48" className="h-7 w-7" fill="none" aria-hidden="true">
+          <path d="M15 9h18a3 3 0 0 1 3 3v24a3 3 0 0 1-3 3H15a3 3 0 0 1-3-3V12a3 3 0 0 1 3-3Z" stroke="currentColor" strokeWidth="3" />
+          <path d="M21 34h6M20 14h8" stroke="currentColor" strokeWidth="3" strokeLinecap="round" />
+        </svg>
+      ),
+    },
+    {
+      title: '电子邮箱',
+      content: 'contact@zhengqi.com',
+      color: 'bg-amber-50 text-amber-700',
+      icon: (
+        <svg viewBox="0 0 48 48" className="h-7 w-7" fill="none" aria-hidden="true">
+          <path d="M9 14h30v22H9z" stroke="currentColor" strokeWidth="3" strokeLinejoin="round" />
+          <path d="m10 15 14 12 14-12" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
+        </svg>
+      ),
+    },
+    {
+      title: '工作时间',
+      content: '周一至周五 9:00-18:00',
+      color: 'bg-indigo-50 text-indigo-700',
+      icon: (
+        <svg viewBox="0 0 48 48" className="h-7 w-7" fill="none" aria-hidden="true">
+          <path d="M24 40a16 16 0 1 0 0-32 16 16 0 0 0 0 32Z" stroke="currentColor" strokeWidth="3" />
+          <path d="M24 15v10l7 4" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
+        </svg>
+      ),
+    },
+  ];
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     alert('感谢您的留言！我们会尽快与您联系。');
@@ -120,20 +167,21 @@ export default function ContactPage() {
             <div className="space-y-5 animate-fadeInRight" style={{ animationDelay: '300ms' }}>
               {/* 联系信息卡片 */}
               <div className="rounded-lg border border-slate-200 bg-white p-8 shadow-sm transition-all duration-500 hover:-translate-y-1 hover:shadow-xl hover:shadow-slate-200">
-                <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-6">联系方式</h2>
+                <h2 className="mb-6 text-2xl font-black text-slate-900 md:text-3xl">联系方式</h2>
 
-                <div className="space-y-4">
-                  {[
-                    { icon: '📍', title: '公司地址', content: '福建省莆田市荔城区XX路XX号' },
-                    { icon: '📞', title: '联系电话', content: '138-XXXX-XXXX' },
-                    { icon: '📧', title: '电子邮箱', content: 'contact@zhengqi.com' },
-                    { icon: '🕐', title: '工作时间', content: '周一至周五 9:00-18:00' }
-                  ].map((item, i) => (
-                    <div key={i} className="flex items-start gap-4 rounded-lg border border-slate-200 bg-slate-50 p-4 transition-all duration-300 hover:-translate-y-1 hover:border-sky-200 hover:bg-sky-50">
-                      <span className="text-3xl">{item.icon}</span>
+                <div className="grid gap-4 sm:grid-cols-2">
+                  {contactMethods.map((item, i) => (
+                    <div
+                      key={item.title}
+                      className="group animate-scaleIn rounded-lg border border-slate-200 bg-white p-5 transition-all duration-300 hover:-translate-y-1 hover:border-sky-200 hover:shadow-lg hover:shadow-slate-100"
+                      style={{ animationDelay: `${i * 110}ms` }}
+                    >
+                      <div className={`mb-5 grid h-12 w-12 place-items-center rounded-lg ${item.color} transition duration-300 group-hover:scale-110`}>
+                        {item.icon}
+                      </div>
                       <div>
-                        <h3 className="font-black text-gray-900 text-base mb-1">{item.title}</h3>
-                        <p className="text-gray-700 text-sm font-medium">{item.content}</p>
+                        <h3 className="mb-1 text-base font-black text-slate-900">{item.title}</h3>
+                        <p className="text-sm font-medium leading-6 text-slate-600">{item.content}</p>
                       </div>
                     </div>
                   ))}
@@ -141,7 +189,7 @@ export default function ContactPage() {
               </div>
 
               {/* 地图图片卡片 */}
-              <div className="group relative h-48 overflow-hidden rounded-lg border border-slate-200 shadow-sm transition-all duration-500 hover:-translate-y-1 hover:shadow-xl hover:shadow-slate-200">
+              <div className="group relative h-48 animate-fadeInUp overflow-hidden rounded-lg border border-slate-200 shadow-sm transition-all duration-500 hover:-translate-y-1 hover:shadow-xl hover:shadow-slate-200" style={{ animationDelay: '420ms' }}>
                 <Image
                   src="https://images.unsplash.com/photo-1524661135-423995f22d0b?w=800&h=400&fit=crop&q=80"
                   alt="公司位置地图"
@@ -166,5 +214,4 @@ export default function ContactPage() {
     </div>
   );
 }
-
 
