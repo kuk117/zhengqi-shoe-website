@@ -86,9 +86,9 @@ export default function Home() {
                 sizes="(max-width: 1024px) 100vw, 45vw"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-white/70 via-white/5 to-transparent"></div>
-              <div className="absolute bottom-5 left-5 right-5 animate-fadeInUp rounded-lg border border-white/80 bg-white/90 p-5 text-slate-900 shadow-xl shadow-slate-200/70 backdrop-blur transition duration-300 hover:-translate-y-1 hover:bg-white md:bottom-6 md:left-6 md:right-6 md:p-6" style={{ animationDelay: '520ms' }}>
+              <div className="absolute bottom-5 left-5 right-5 animate-fadeInUp rounded-lg border border-white/80 bg-white/90 p-4 text-slate-900 shadow-xl shadow-slate-200/70 backdrop-blur transition duration-300 hover:-translate-y-1 hover:bg-white md:bottom-6 md:left-6 md:right-6 md:p-5" style={{ animationDelay: '520ms' }}>
                 <p className="text-sm font-bold text-sky-700">现场问题，经营语言表达</p>
-                <p className="mt-2 max-w-md text-2xl font-black leading-snug">把“感觉不顺”变成可追踪的改善任务。</p>
+                <p className="mt-2 max-w-md text-xl font-black leading-snug md:text-2xl">把“感觉不顺”变成可追踪的改善任务。</p>
               </div>
             </div>
           </div>

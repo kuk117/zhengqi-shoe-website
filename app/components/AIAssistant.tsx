@@ -132,17 +132,25 @@ export default function AIAssistant() {
     <>
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className={`fixed bottom-8 right-8 z-50 w-16 h-16 rounded-full shadow-2xl flex items-center justify-center transition-all duration-300 ${
-          isOpen ? 'bg-gray-600 rotate-0 scale-90' : 'bg-gradient-to-br from-blue-600 to-cyan-500 hover:scale-110'
+        className={`fixed bottom-8 right-8 z-50 flex h-16 w-16 items-center justify-center rounded-full shadow-2xl transition-all duration-300 ${
+          isOpen ? 'scale-90 bg-slate-700' : 'bg-white text-sky-700 ring-1 ring-sky-100 hover:-translate-y-1 hover:scale-105 hover:shadow-sky-200'
         }`}
         style={{ animation: isOpen ? 'none' : 'pulse 2s infinite' }}
+        aria-label={isOpen ? '关闭智能助手' : '打开智能助手'}
       >
         {isOpen ? (
           <svg className="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
           </svg>
         ) : (
-          <span className="text-2xl">🤖</span>
+          <span className="relative grid h-12 w-12 place-items-center rounded-full bg-sky-50">
+            <svg viewBox="0 0 48 48" className="h-8 w-8" fill="none" aria-hidden="true">
+              <path d="M16 19h16a8 8 0 0 1 8 8v3a8 8 0 0 1-8 8H16a8 8 0 0 1-8-8v-3a8 8 0 0 1 8-8Z" stroke="currentColor" strokeWidth="3" />
+              <path d="M24 19v-6M18 13h12M17 29h.1M31 29h.1" stroke="currentColor" strokeWidth="3" strokeLinecap="round" />
+              <path d="M19 34h10" stroke="currentColor" strokeWidth="3" strokeLinecap="round" />
+            </svg>
+            <span className="absolute right-1 top-1 h-3 w-3 rounded-full border-2 border-white bg-emerald-400"></span>
+          </span>
         )}
       </button>
 
@@ -151,7 +159,12 @@ export default function AIAssistant() {
           <div className="bg-gradient-to-r from-blue-600 via-blue-500 to-cyan-500 p-5 text-white relative">
             <div className="flex justify-between items-start mb-2">
               <div className="flex items-center gap-3">
-                <span className="text-3xl">💬</span>
+                <span className="grid h-11 w-11 place-items-center rounded-lg bg-white/15">
+                  <svg viewBox="0 0 48 48" className="h-7 w-7" fill="none" aria-hidden="true">
+                    <path d="M14 18h20a8 8 0 0 1 8 8v2a8 8 0 0 1-8 8H21l-8 6v-6a7 7 0 0 1-7-7v-3a8 8 0 0 1 8-8Z" stroke="currentColor" strokeWidth="3" strokeLinejoin="round" />
+                    <path d="M18 27h.1M24 27h.1M30 27h.1" stroke="currentColor" strokeWidth="3" strokeLinecap="round" />
+                  </svg>
+                </span>
                 <div>
                   <h3 className="font-bold text-lg">通义千问 AI 助手</h3>
                   <p className="text-xs text-blue-100">莆田正奇鞋业咨询</p>

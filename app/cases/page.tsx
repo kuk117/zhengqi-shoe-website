@@ -82,12 +82,11 @@ export default function CasesPage() {
         <div className="absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-t from-white to-transparent"></div>
       </section>
 
-      {/* 案例卡片区域 无改动 */}
       <section className="py-16 bg-gradient-to-b from-gray-50 to-white">
         <div className="container mx-auto px-6 lg:px-12 max-w-7xl">
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
             {cases.map((caseItem, i) => (
-              <div key={i} className="bg-white rounded-xl shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-2 border border-gray-100 overflow-hidden group animate-scaleIn" style={{ animationDelay: `${i * 100}ms` }}>
+              <div key={i} className="overflow-hidden rounded-lg border border-slate-200 bg-white shadow-sm transition-all duration-300 hover:-translate-y-2 hover:shadow-xl hover:shadow-slate-200 group animate-scaleIn" style={{ animationDelay: `${i * 100}ms` }}>
                 <div className="relative h-48 lg:h-56 overflow-hidden">
                   <Image 
                     src={caseItem.image} 
@@ -96,26 +95,26 @@ export default function CasesPage() {
                     className="object-cover group-hover:scale-110 transition-transform duration-500"
                     sizes="(max-width: 1024px) 100vw, 33vw"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent"></div>
-                  <div className="absolute bottom-0 left-0 right-0 p-5 text-gray-900">
-                    <h3 className="text-lg md:text-xl font-bold ">{caseItem.company}</h3>
+                  <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-slate-900/25 to-transparent"></div>
+                  <div className="absolute bottom-0 left-0 right-0 p-5 text-white">
+                    <h3 className="text-lg font-black leading-snug drop-shadow md:text-xl">{caseItem.company}</h3>
                   </div>
                 </div>
 
                 <div className="p-5 space-y-3">
-                  <div className="flex items-center justify-between pb-3 border-b-2 border-gray-100">
-                    <span className="text-sm font-semibold text-gray-700">核心成果：</span>
-                    <span className="text-base font-black bg-gradient-to-r from-green-500 to-emerald-600 bg-clip-text text-transparent">{caseItem.result}</span>
+                  <div className="flex items-center justify-between gap-4 rounded-lg bg-emerald-50 px-4 py-3">
+                    <span className="text-sm font-bold text-slate-600">核心成果</span>
+                    <span className="text-base font-black text-emerald-700">{caseItem.result}</span>
                   </div>
-                  <div className="flex justify-between items-center">
-                    <span className="text-sm font-semibold text-gray-700">改善幅度：</span>
-                    <span className="text-sm font-bold text-blue-600">{caseItem.improvement}</span>
+                  <div className="flex justify-between items-center px-1">
+                    <span className="text-sm font-semibold text-slate-500">改善幅度</span>
+                    <span className="text-sm font-bold text-sky-700">{caseItem.improvement}</span>
                   </div>
-                  <div className="flex justify-between items-center pt-2">
-                    <span className="text-sm font-semibold text-gray-700">项目周期：</span>
-                    <span className="text-sm font-bold text-gray-900">{caseItem.period}</span>
+                  <div className="flex justify-between items-center px-1 pt-2">
+                    <span className="text-sm font-semibold text-slate-500">项目周期</span>
+                    <span className="text-sm font-bold text-slate-900">{caseItem.period}</span>
                   </div>
-                  <button className="w-full mt-4 py-3 bg-gradient-to-r from-blue-50 to-cyan-50 text-blue-700 font-bold rounded-lg hover:from-blue-100 hover:to-cyan-100 transition-all border-2 border-blue-200 hover:border-blue-400">
+                  <button className="mt-4 w-full rounded-lg border border-sky-100 bg-sky-50 py-3 font-bold text-sky-700 transition-all hover:-translate-y-0.5 hover:border-sky-200 hover:bg-white hover:shadow-md">
                     查看详情 →
                   </button>
                 </div>
@@ -125,16 +124,15 @@ export default function CasesPage() {
 
           {/* 底部咨询模块 */}
           <div className="mt-16">
-            <div className="grid items-center gap-8 rounded-lg border border-slate-200 bg-white p-8 shadow-sm shadow-slate-100 md:p-10 lg:grid-cols-[1fr_auto] animate-fadeInUp" style={{ animationDelay: '600ms' }}>
+            <div className="grid items-center gap-8 rounded-lg border border-sky-100 bg-[linear-gradient(135deg,#f8fafc_0%,#ffffff_54%,#e0f2fe_100%)] p-8 shadow-sm shadow-slate-100 md:p-10 lg:grid-cols-[1fr_auto] animate-fadeInUp" style={{ animationDelay: '600ms' }}>
               <div className="text-left">
-                <p className="mb-3 text-sm font-bold text-sky-600">下一步沟通</p>
                 <h3 className="text-2xl font-black text-slate-900 md:text-3xl">把你的现场问题变成一份诊断清单</h3>
                 <p className="mt-4 max-w-2xl text-base leading-7 text-slate-600">
                   简单说明企业规模、订单类型和当前卡点，我们先判断最值得优先改善的方向。
                 </p>
               </div>
               <div className="flex flex-col gap-3 sm:flex-row lg:flex-col">
-                <a href="/contact" className="inline-flex items-center justify-center rounded-lg bg-slate-900 px-8 py-4 text-base font-black text-white transition hover:-translate-y-0.5 hover:bg-sky-700">
+                <a href="/contact" className="inline-flex items-center justify-center rounded-lg bg-sky-600 px-8 py-4 text-base font-black text-white transition hover:-translate-y-0.5 hover:bg-sky-700 hover:shadow-lg hover:shadow-sky-100">
                   免费咨询
                   <span className="ml-3 text-xl">→</span>
                 </a>
@@ -149,6 +147,5 @@ export default function CasesPage() {
     </div>
   );
 }
-
 
 
