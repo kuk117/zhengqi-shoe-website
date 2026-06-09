@@ -69,7 +69,7 @@ export default function ServicesPage() {
         <div className="absolute inset-0 flex items-center justify-center z-10 px-6">
           <div className="text-center max-w-4xl">
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-4 animate-fadeInUp">
-              "4+1" 企业进化升级体系
+              “4+1” 企业进化升级体系
             </h1>
             <p className="text-lg md:text-xl text-gray-600 font-semibold animate-fadeInUp" style={{animationDelay: '200ms'}}>
               精益 · 敏捷 · 利润 · 数字化 · 陪跑落地

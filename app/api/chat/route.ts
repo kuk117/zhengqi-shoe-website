@@ -83,8 +83,9 @@ export async function POST(request: NextRequest) {
       },
     });
 
-  } catch (error: any) {
-    console.error('💥 异常:', error.message);
-    return NextResponse.json({ error: error.message }, { status: 500 });
+  } catch (error: unknown) {
+    const message = error instanceof Error ? error.message : '未知错误';
+    console.error('💥 异常:', message);
+    return NextResponse.json({ error: message }, { status: 500 });
   }
 }

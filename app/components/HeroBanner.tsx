@@ -1,6 +1,6 @@
 ﻿'use client';
 
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 
@@ -27,13 +27,7 @@ export default function HeroBanner({
   ctaText,
   ctaLink = '/contact'
 }: HeroBannerProps) {
-  const [mounted, setMounted] = useState(false);
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
-
-  // 浮动粒子预设位置（避免hydration错误）
+  // 固定粒子位置，避免服务端和客户端渲染不一致。
   const particles = [
     { left: '5%', top: '10%', size: 'w-3 h-3', delay: '0s', duration: '6s' },
     { left: '15%', top: '70%', size: 'w-2 h-2', delay: '1s', duration: '5s' },
@@ -80,8 +74,8 @@ export default function HeroBanner({
           }}
         ></div>
 
-        {/* 浮动粒子（只在客户端渲染） */}
-        {mounted && particles.map((particle, i) => (
+        {/* 浮动粒子 */}
+        {particles.map((particle, i) => (
           <div
             key={i}
             className={`absolute ${particle.size} bg-white/15 rounded-full backdrop-blur-sm animate-float shadow-lg shadow-white/10`}
