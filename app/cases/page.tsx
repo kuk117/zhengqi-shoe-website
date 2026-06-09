@@ -124,13 +124,24 @@ export default function CasesPage() {
           </div>
 
           {/* 底部咨询模块 */}
-          <div className="mt-16 text-center">
-            <div className="bg-white rounded-2xl shadow-xl p-10 md:p-14 border-4 border-blue-100 inline-block max-w-2xl animate-fadeInUp" style={{ animationDelay: '600ms' }}>
-              <h3 className="text-2xl md:text-3xl font-bold text-gray-900 mb-5">想成为下一个成功案例？</h3>
-              <p className="text-lg text-gray-700 mb-8">免费预约专家诊断，获取专属改善方案</p>
-              <a href="/contact" className="inline-block px-10 py-4 bg-gradient-to-r from-blue-700 via-blue-600 to-cyan-500 text-gray-900 rounded-xl font-bold text-lg hover:from-blue-800 hover:to-cyan-600 transition transform hover:scale-105 shadow-xl">
-                📞 免费咨询 →
-              </a>
+          <div className="mt-16">
+            <div className="grid items-center gap-8 rounded-lg border border-slate-200 bg-white p-8 shadow-sm shadow-slate-100 md:p-10 lg:grid-cols-[1fr_auto] animate-fadeInUp" style={{ animationDelay: '600ms' }}>
+              <div className="text-left">
+                <p className="mb-3 text-sm font-bold text-sky-600">下一步沟通</p>
+                <h3 className="text-2xl font-black text-slate-900 md:text-3xl">把你的现场问题变成一份诊断清单</h3>
+                <p className="mt-4 max-w-2xl text-base leading-7 text-slate-600">
+                  简单说明企业规模、订单类型和当前卡点，我们先判断最值得优先改善的方向。
+                </p>
+              </div>
+              <div className="flex flex-col gap-3 sm:flex-row lg:flex-col">
+                <a href="/contact" className="inline-flex items-center justify-center rounded-lg bg-slate-900 px-8 py-4 text-base font-black text-white transition hover:-translate-y-0.5 hover:bg-sky-700">
+                  免费咨询
+                  <span className="ml-3 text-xl">→</span>
+                </a>
+                <a href="/services" className="inline-flex items-center justify-center rounded-lg border border-slate-200 bg-slate-50 px-8 py-4 text-base font-black text-slate-800 transition hover:border-sky-200 hover:bg-white hover:text-sky-700">
+                  查看服务
+                </a>
+              </div>
             </div>
           </div>
         </div>
@@ -138,7 +149,6 @@ export default function CasesPage() {
     </div>
   );
 }
-
 
 
 

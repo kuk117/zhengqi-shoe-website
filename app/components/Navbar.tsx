@@ -15,15 +15,15 @@ export default function Navbar() {
   ];
 
   return (
-    <nav className="bg-white shadow-sm border-b border-gray-100 shadow-lg fixed w-full z-40 top-0 transition-all duration-300 border-b border-blue-500/30">
-      <div className="container mx-auto px-4 py-4 flex justify-between items-center">
+    <nav className="fixed top-0 z-40 w-full border-b border-slate-200/80 bg-white/95 shadow-sm backdrop-blur transition-all duration-300">
+      <div className="container mx-auto flex items-center justify-between px-4 py-4">
         <Link href="/" className="group flex items-center gap-3">
-          <div className="w-10 h-10 bg-gradient-to-br from-blue-600 to-blue-400 rounded-xl flex items-center justify-center text-gray-900 font-bold text-lg shadow-lg group-hover:shadow-blue-300 transition-all duration-300 group-hover:scale-110">
+          <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-slate-900 text-lg font-bold text-white shadow-sm transition-all duration-300 group-hover:-translate-y-0.5 group-hover:bg-sky-700">
             正
           </div>
           <div className="hidden sm:block">
-            <h1 className="text-xl font-bold text-gradient-blue leading-tight">莆田正奇</h1>
-            <p className="text-xs text-gray-500 -mt-0.5">鞋业咨询</p>
+            <h1 className="text-xl font-black leading-tight text-slate-900">莆田正奇</h1>
+            <p className="-mt-0.5 text-xs font-medium text-slate-500">鞋业咨询</p>
           </div>
         </Link>
 
@@ -32,16 +32,15 @@ export default function Navbar() {
             <Link
               key={item.path}
               href={item.path}
-              className={`relative px-4 py-2 rounded-lg font-medium text-sm transition-all duration-300 group ${
+              className={`relative rounded-lg px-4 py-2 text-sm font-semibold transition-all duration-300 ${
                 pathname === item.path
-                  ? 'text-yellow-300 bg-blue-50'
-                  : 'text-gray-600 hover:text-yellow-300 hover:bg-blue-50/50'
+                  ? 'bg-sky-50 text-sky-700'
+                  : 'text-slate-600 hover:bg-slate-50 hover:text-slate-900'
               }`}
             >
-              <span className="mr-1.5"></span>
               {item.name}
               {pathname === item.path && (
-                <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-8 h-0.5 bg-blue-600 rounded-full"></span>
+                <span className="absolute bottom-0 left-1/2 h-0.5 w-8 -translate-x-1/2 rounded-full bg-sky-600"></span>
               )}
             </Link>
           ))}
@@ -49,7 +48,7 @@ export default function Navbar() {
 
         <Link
           href="/contact"
-          className="hidden md:inline-flex items-center gap-2 px-5 py-2.5 btn-primary rounded-lg text-sm font-semibold shadow-lg hover:shadow-blue-300"
+          className="hidden items-center gap-2 rounded-lg bg-slate-900 px-5 py-2.5 text-sm font-bold text-white shadow-sm transition hover:-translate-y-0.5 hover:bg-sky-700 md:inline-flex"
         >
           免费咨询
           <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">

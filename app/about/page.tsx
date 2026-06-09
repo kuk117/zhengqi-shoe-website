@@ -45,8 +45,8 @@ export default function AboutPage() {
         />
         <div className="absolute inset-0 bg-gradient-to-r from-slate-950 via-slate-950/90 to-slate-900/45"></div>
         <div className="container relative z-10 mx-auto flex min-h-[520px] max-w-7xl items-center px-6 py-16 md:px-8 lg:px-12">
-          <div className="max-w-4xl">
-            <p className="mb-5 inline-flex rounded-full border border-white/15 bg-white/10 px-5 py-2 text-sm font-bold text-sky-100 backdrop-blur">
+          <div className="max-w-4xl animate-fadeInUp">
+            <p className="mb-5 inline-flex rounded-lg border border-white/15 bg-white/10 px-5 py-2 text-sm font-bold text-sky-100 backdrop-blur">
               关于正奇咨询
             </p>
             <h1 className="mb-6 text-4xl font-black leading-tight md:text-5xl lg:text-6xl">
@@ -56,15 +56,15 @@ export default function AboutPage() {
               我们把鞋服制造一线经验、经营数据和陪跑落地机制结合起来，帮助企业把改善真正落实到订单、现场、团队和利润。
             </p>
             <div className="mt-10 grid max-w-3xl gap-3 sm:grid-cols-3">
-              <div className="rounded-lg border border-white/10 bg-white/10 p-5 backdrop-blur">
+              <div className="animate-scaleIn rounded-lg border border-white/10 bg-white/10 p-5 backdrop-blur" style={{ animationDelay: '160ms' }}>
                 <div className="text-2xl font-black">2016年</div>
                 <div className="mt-1 text-sm text-slate-300">公司成立</div>
               </div>
-              <div className="rounded-lg border border-white/10 bg-white/10 p-5 backdrop-blur">
+              <div className="animate-scaleIn rounded-lg border border-white/10 bg-white/10 p-5 backdrop-blur" style={{ animationDelay: '280ms' }}>
                 <div className="text-2xl font-black">10年</div>
                 <div className="mt-1 text-sm text-slate-300">行业深耕</div>
               </div>
-              <div className="rounded-lg border border-white/10 bg-white/10 p-5 backdrop-blur">
+              <div className="animate-scaleIn rounded-lg border border-white/10 bg-white/10 p-5 backdrop-blur" style={{ animationDelay: '400ms' }}>
                 <div className="text-2xl font-black">19.8年</div>
                 <div className="mt-1 text-sm text-slate-300">团队平均经验</div>
               </div>
@@ -76,7 +76,7 @@ export default function AboutPage() {
       <section className="bg-white py-20 md:py-24">
         <div className="container mx-auto max-w-7xl px-6 md:px-8 lg:px-12">
           <div className="grid items-center gap-12 lg:grid-cols-[0.95fr_1.05fr]">
-            <div>
+            <div className="animate-fadeInLeft">
               <p className="mb-4 text-base font-bold text-sky-600">公司简介</p>
               <h2 className="mb-6 text-3xl font-black leading-tight text-slate-900 md:text-4xl">
                 扎根产业现场，解决真实管理问题
@@ -94,13 +94,13 @@ export default function AboutPage() {
               </div>
             </div>
 
-            <div className="relative overflow-hidden rounded-lg border border-slate-100 shadow-xl shadow-slate-100">
+            <div className="relative animate-fadeInRight overflow-hidden rounded-lg border border-slate-100 shadow-xl shadow-slate-100">
               <Image
                 src="https://images.unsplash.com/photo-1553877522-43269d4ea984?w=900&h=720&fit=crop&q=80"
                 alt="正奇咨询团队讨论"
                 width={900}
                 height={720}
-                className="aspect-[5/4] w-full object-cover"
+                className="aspect-[5/4] w-full object-cover transition duration-700 hover:scale-105"
                 sizes="(max-width: 1024px) 100vw, 48vw"
               />
               <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-slate-950/75 to-transparent p-6 text-white">
@@ -130,7 +130,8 @@ export default function AboutPage() {
             {coreAdvantages.map((item, i) => (
               <div
                 key={item.title}
-                className="group relative overflow-hidden rounded-lg border border-slate-200 bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:shadow-xl hover:shadow-slate-200"
+                className="group relative animate-scaleIn overflow-hidden rounded-lg border border-slate-200 bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:shadow-xl hover:shadow-slate-200"
+                style={{ animationDelay: `${i * 120}ms` }}
               >
                 <div className={`absolute inset-x-0 top-0 h-1.5 bg-gradient-to-r ${item.accent}`}></div>
                 <div className="mb-8 flex items-start justify-between">
@@ -150,7 +151,7 @@ export default function AboutPage() {
 
       <section className="bg-white py-20 md:py-24">
         <div className="container mx-auto max-w-7xl px-6 md:px-8 lg:px-12">
-          <div className="grid items-center gap-8 rounded-lg border border-slate-200 bg-[linear-gradient(135deg,#f8fafc_0%,#ffffff_50%,#e0f2fe_100%)] p-8 shadow-sm md:p-12 lg:grid-cols-[1fr_auto]">
+          <div className="grid animate-fadeInUp items-center gap-8 rounded-lg border border-slate-200 bg-[linear-gradient(135deg,#f8fafc_0%,#ffffff_50%,#e0f2fe_100%)] p-8 shadow-sm md:p-12 lg:grid-cols-[1fr_auto]">
             <div>
               <p className="mb-3 text-base font-bold text-sky-600">进一步沟通</p>
               <h2 className="text-3xl font-black text-slate-900 md:text-4xl">了解公司案例和诊断方式</h2>
