@@ -31,16 +31,13 @@ export default function Home() {
       <section className="relative overflow-hidden bg-[linear-gradient(135deg,#f8fafc_0%,#eef8ff_52%,#ffffff_100%)]">
         <div className="container mx-auto grid min-h-[620px] max-w-7xl items-center gap-12 px-6 py-16 md:px-8 lg:grid-cols-[1.02fr_0.98fr] lg:px-12">
           <div className="relative z-10 max-w-3xl animate-fadeInUp">
-            <p className="mb-5 inline-flex animate-fadeInUp rounded-lg border border-slate-200 bg-white px-4 py-2 text-sm font-bold text-slate-700 shadow-sm">
-              鞋企经营改善入口
-            </p>
-            <h1 className="mb-6 animate-fadeInUp text-4xl font-black leading-tight text-slate-950 md:text-5xl lg:text-6xl" style={{ animationDelay: '120ms' }}>
+            <h1 className="mb-6 animate-fadeInUp text-4xl font-black leading-tight text-slate-950 md:text-5xl" style={{ animationDelay: '80ms' }}>
               从一张诊断表开始，重排鞋厂增长节奏
             </h1>
-            <p className="mb-9 max-w-2xl animate-fadeInUp text-lg leading-8 text-slate-600 md:text-xl" style={{ animationDelay: '240ms' }}>
-              首页不再重复公司简介，而是直接呈现正奇如何帮鞋企把问题拆开、把动作排清、把结果追到底。
+            <p className="mb-9 max-w-2xl animate-fadeInUp text-lg leading-8 text-slate-600 md:text-xl" style={{ animationDelay: '200ms' }}>
+              用更清晰的诊断路径，把交付、效率、成本和团队协作里的关键问题逐步拆开、排清、追到底。
             </p>
-            <div className="flex animate-fadeInUp flex-col gap-3 sm:flex-row" style={{ animationDelay: '360ms' }}>
+            <div className="flex animate-fadeInUp flex-col gap-3 sm:flex-row" style={{ animationDelay: '320ms' }}>
               <Link
                 href="/contact"
                 className="group inline-flex items-center justify-center rounded-lg bg-sky-600 px-8 py-4 text-base font-black text-white shadow-lg shadow-sky-100 transition duration-300 hover:-translate-y-1 hover:bg-sky-700 hover:shadow-xl hover:shadow-sky-200"
@@ -58,24 +55,9 @@ export default function Home() {
           </div>
 
           <div className="relative animate-fadeInRight">
-            <div className="absolute -left-6 top-10 z-10 hidden rounded-lg border border-white bg-white p-5 shadow-xl shadow-slate-200 lg:block animate-float">
-              <p className="text-sm font-bold text-slate-500">诊断看板</p>
-              <div className="mt-3 grid grid-cols-3 gap-3">
-                {dashboardItems.map((item, i) => (
-                  <div
-                    key={item.label}
-                    className={`animate-scaleIn rounded-lg p-3 text-center transition duration-300 hover:-translate-y-1 hover:shadow-md ${item.tone}`}
-                    style={{ animationDelay: `${420 + i * 120}ms` }}
-                  >
-                    <div className="text-lg font-black">{item.value}</div>
-                    <div className="mt-1 text-xs font-bold">{item.label}</div>
-                  </div>
-                ))}
-              </div>
-            </div>
             <div className="relative h-[360px] animate-scaleIn overflow-hidden rounded-lg border border-white bg-white shadow-2xl shadow-sky-100 md:h-[470px]" style={{ animationDelay: '180ms' }}>
               <Image
-                src="https://images.unsplash.com/photo-1553877522-43269d4ea984?w=1000&h=1200&fit=crop&q=80"
+                src="https://images.unsplash.com/photo-1497366811353-6870744d04b2?w=1000&h=1200&fit=crop&q=80"
                 alt="鞋企经营诊断讨论"
                 fill
                 className="object-cover transition duration-700 hover:scale-105"
@@ -95,8 +77,7 @@ export default function Home() {
       <section className="bg-white py-20 md:py-24">
         <div className="container mx-auto max-w-7xl px-6 md:px-8 lg:px-12">
           <div className="mb-12 max-w-3xl animate-fadeInUp">
-            <p className="mb-4 text-base font-bold text-sky-600">首页重点</p>
-            <h2 className="text-3xl font-black leading-tight text-slate-950 md:text-4xl lg:text-5xl">
+            <h2 className="text-3xl font-black leading-tight text-slate-950 md:text-4xl">
               不是展示口号，而是展示一次改善如何发生
             </h2>
           </div>
@@ -123,7 +104,7 @@ export default function Home() {
           <div className="relative animate-fadeInLeft">
             <div className="relative animate-scaleIn overflow-hidden rounded-lg border border-slate-200 bg-white shadow-xl shadow-slate-200" style={{ animationDelay: '120ms' }}>
               <Image
-                src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?w=1000&h=780&fit=crop&q=80"
+                src="https://images.unsplash.com/photo-1557804506-669a67965ba0?w=1000&h=780&fit=crop&q=80"
                 alt="经营复盘会议"
                 width={1000}
                 height={780}
@@ -133,7 +114,6 @@ export default function Home() {
             </div>
           </div>
           <div className="animate-fadeInRight">
-            <p className="mb-4 animate-fadeInUp text-base font-bold text-sky-600">服务入口</p>
             <h2 className="mb-6 animate-fadeInUp text-3xl font-black leading-tight text-slate-950 md:text-4xl" style={{ animationDelay: '120ms' }}>
               适合先从哪一类问题切入？
             </h2>
@@ -144,7 +124,7 @@ export default function Home() {
               {dashboardItems.map((item, i) => (
                 <div
                   key={item.label}
-                  className={`animate-scaleIn rounded-lg p-5 transition duration-300 hover:-translate-y-1 hover:shadow-lg ${item.tone}`}
+                  className={`animate-scaleIn rounded-lg p-5 transition duration-300 hover:-translate-y-2 hover:scale-[1.02] hover:shadow-lg ${item.tone}`}
                   style={{ animationDelay: `${320 + i * 120}ms` }}
                 >
                   <div className="text-2xl font-black">{item.value}</div>

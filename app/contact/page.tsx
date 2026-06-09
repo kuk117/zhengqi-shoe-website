@@ -59,7 +59,7 @@ export default function ContactPage() {
         <div className="container mx-auto px-8 lg:px-12 max-w-7xl">
           <div className="grid lg:grid-cols-2 gap-10">
             {/* 左侧留言表单 左侧入场动画 */}
-            <div className="bg-white rounded-2xl shadow-lg p-8 lg:p-10 border-4 border-gray-100 animate-fadeInLeft hover:shadow-2xl transition-all duration-500 hover:-translate-y-1">
+            <div className="rounded-lg border border-slate-200 bg-white p-8 shadow-sm animate-fadeInLeft transition-all duration-500 hover:-translate-y-1 hover:shadow-xl hover:shadow-slate-200 lg:p-10">
               <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-6">在线留言</h2>
 
               <form onSubmit={handleSubmit} className="space-y-4">
@@ -68,14 +68,14 @@ export default function ContactPage() {
                     type="text"
                     placeholder="您的姓名 *"
                     required
-                    className="w-full px-5 py-3 border-2 border-gray-200 rounded-lg focus:border-blue-500 focus:outline-none transition-all duration-300 text-base hover:border-blue-300 focus:shadow-blue-200 focus:shadow-md"
+                    className="w-full rounded-lg border border-slate-200 px-5 py-3 text-base transition-all duration-300 hover:border-sky-300 focus:border-sky-500 focus:outline-none focus:shadow-md focus:shadow-sky-100"
                     value={formData.name}
                     onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                   />
                   <input
                     type="text"
                     placeholder="公司名称"
-                    className="w-full px-5 py-3 border-2 border-gray-200 rounded-lg focus:border-blue-500 focus:outline-none transition-all duration-300 text-base hover:border-blue-300 focus:shadow-blue-200 focus:shadow-md"
+                    className="w-full rounded-lg border border-slate-200 px-5 py-3 text-base transition-all duration-300 hover:border-sky-300 focus:border-sky-500 focus:outline-none focus:shadow-md focus:shadow-sky-100"
                     value={formData.company}
                     onChange={(e) => setFormData({ ...formData, company: e.target.value })}
                   />
@@ -86,14 +86,14 @@ export default function ContactPage() {
                     type="tel"
                     placeholder="联系电话 *"
                     required
-                    className="w-full px-5 py-3 border-2 border-gray-200 rounded-lg focus:border-blue-500 focus:outline-none transition-all duration-300 text-base hover:border-blue-300 focus:shadow-blue-200 focus:shadow-md"
+                    className="w-full rounded-lg border border-slate-200 px-5 py-3 text-base transition-all duration-300 hover:border-sky-300 focus:border-sky-500 focus:outline-none focus:shadow-md focus:shadow-sky-100"
                     value={formData.phone}
                     onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                   />
                   <input
                     type="email"
                     placeholder="电子邮箱"
-                    className="w-full px-5 py-3 border-2 border-gray-200 rounded-lg focus:border-blue-500 focus:outline-none transition-all duration-300 text-base hover:border-blue-300 focus:shadow-blue-200 focus:shadow-md"
+                    className="w-full rounded-lg border border-slate-200 px-5 py-3 text-base transition-all duration-300 hover:border-sky-300 focus:border-sky-500 focus:outline-none focus:shadow-md focus:shadow-sky-100"
                     value={formData.email}
                     onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                   />
@@ -102,14 +102,14 @@ export default function ContactPage() {
                 <textarea
                   placeholder="请描述您的需求或问题..."
                   rows={4}
-                  className="w-full px-5 py-3 border-2 border-gray-200 rounded-lg focus:border-blue-500 focus:outline-none transition-all duration-300 resize-none text-base hover:border-blue-300 focus:shadow-blue-200 focus:shadow-md"
+                  className="w-full resize-none rounded-lg border border-slate-200 px-5 py-3 text-base transition-all duration-300 hover:border-sky-300 focus:border-sky-500 focus:outline-none focus:shadow-md focus:shadow-sky-100"
                   value={formData.message}
                   onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                 ></textarea>
 
                 <button
                   type="submit"
-                  className="w-full py-4 bg-gradient-to-r from-blue-700 via-blue-600 to-cyan-500 text-gray-900 rounded-xl font-bold text-lg hover:from-blue-800 hover:to-cyan-600 transition-all duration-300 transform hover:scale-105 active:scale-[0.97] shadow-xl hover:shadow-2xl"
+                  className="w-full rounded-lg bg-sky-600 py-4 text-lg font-black text-white shadow-lg shadow-sky-100 transition-all duration-300 hover:-translate-y-1 hover:bg-sky-700 hover:shadow-xl active:scale-[0.98]"
                 >
                   提交留言 →
                 </button>
@@ -119,7 +119,7 @@ export default function ContactPage() {
             {/* 右侧联系方式 右侧入场动画 */}
             <div className="space-y-5 animate-fadeInRight" style={{ animationDelay: '300ms' }}>
               {/* 联系信息卡片 */}
-              <div className="bg-white rounded-2xl shadow-lg p-8 border-4 border-gray-100 hover:shadow-2xl transition-all duration-500 hover:-translate-y-1">
+              <div className="rounded-lg border border-slate-200 bg-white p-8 shadow-sm transition-all duration-500 hover:-translate-y-1 hover:shadow-xl hover:shadow-slate-200">
                 <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-6">联系方式</h2>
 
                 <div className="space-y-4">
@@ -129,7 +129,7 @@ export default function ContactPage() {
                     { icon: '📧', title: '电子邮箱', content: 'contact@zhengqi.com' },
                     { icon: '🕐', title: '工作时间', content: '周一至周五 9:00-18:00' }
                   ].map((item, i) => (
-                    <div key={i} className="flex items-start gap-4 p-4 bg-gradient-to-br from-gray-50 to-blue-50 rounded-xl transition-all duration-300 border-2 border-gray-200 hover:border-blue-300 hover:from-blue-50 hover:to-cyan-50 hover:-translate-y-1">
+                    <div key={i} className="flex items-start gap-4 rounded-lg border border-slate-200 bg-slate-50 p-4 transition-all duration-300 hover:-translate-y-1 hover:border-sky-200 hover:bg-sky-50">
                       <span className="text-3xl">{item.icon}</span>
                       <div>
                         <h3 className="font-black text-gray-900 text-base mb-1">{item.title}</h3>
@@ -141,7 +141,7 @@ export default function ContactPage() {
               </div>
 
               {/* 地图图片卡片 */}
-              <div className="relative rounded-2xl overflow-hidden shadow-xl border-4 border-gray-100 h-48 hover:shadow-2xl transition-all duration-500 group hover:-translate-y-1">
+              <div className="group relative h-48 overflow-hidden rounded-lg border border-slate-200 shadow-sm transition-all duration-500 hover:-translate-y-1 hover:shadow-xl hover:shadow-slate-200">
                 <Image
                   src="https://images.unsplash.com/photo-1524661135-423995f22d0b?w=800&h=400&fit=crop&q=80"
                   alt="公司位置地图"
@@ -149,12 +149,7 @@ export default function ContactPage() {
                   className="object-cover group-hover:scale-110 transition-transform duration-700"
                   sizes="(max-width: 1024px) 100vw, 50vw"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end p-5">
-                  <div className="text-gray-900">
-                    <p className="font-black text-lg mb-1">📍 我们的位置</p>
-                    
-                  </div>
-                </div>
+                <div className="absolute inset-0 bg-gradient-to-t from-white/45 to-transparent"></div>
               </div>
             </div>
           </div>
@@ -171,6 +166,5 @@ export default function ContactPage() {
     </div>
   );
 }
-
 
 
