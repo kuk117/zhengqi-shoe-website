@@ -1,10 +1,28 @@
-﻿'use client';
+'use client';
 
-import React, { useState, useRef, useEffect } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 interface Message {
   role: 'user' | 'assistant' | 'system';
   content: string;
+}
+
+const quickQuestions = [
+  '鞋厂交期经常延误，先查哪里？',
+  '你们的4+1服务怎么选择？',
+  '如何判断是否需要数字化？',
+  '想预约诊断，需要准备什么？',
+];
+
+function ConsultantMark({ className = 'h-8 w-8' }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 48 48" className={className} fill="none" aria-hidden="true">
+      <path d="M9 12h30v22H9z" stroke="currentColor" strokeWidth="3" strokeLinejoin="round" />
+      <path d="M15 19h18M15 26h10" stroke="currentColor" strokeWidth="3" strokeLinecap="round" />
+      <path d="m31 31 7 7" stroke="currentColor" strokeWidth="3" strokeLinecap="round" />
+      <path d="M34 34a5 5 0 1 0-7-7 5 5 0 0 0 7 7Z" stroke="currentColor" strokeWidth="3" />
+    </svg>
+  );
 }
 
 export default function AIAssistant() {
@@ -20,35 +38,35 @@ export default function AIAssistant() {
     chatEndRef.current?.scrollIntoView({ behavior: 'smooth' });
   }, [messages, streamingContent]);
 
-  const handleSend = async () => {
-    if (!message.trim() || isTyping) return;
+  const handleSend = async (preset?: string) => {
+    const text = (preset ?? message).trim();
+    if (!text || isTyping) return;
 
-    const userMessage: Message = { role: 'user', content: message.trim() };
-    setMessages(prev => [...prev, userMessage]);
+    const userMessage: Message = { role: 'user', content: text };
+    setMessages((prev) => [...prev, userMessage]);
     setMessage('');
     setIsTyping(true);
     setStreamingContent('');
 
-    const systemPrompt = `你是"莆田正奇鞋业咨询公司"的AI智能助手。你的职责是：
+    const systemPrompt = `你是"莆田正奇鞋业咨询公司"的网站咨询助手。
 
-1. 回答关于鞋业咨询、市场调研、品牌战略、供应链优化等问题
-2. 提供专业的行业见解和建议
-3. 介绍公司的服务内容和成功案例
-4. 回答联系方式和业务咨询相关问题
+职责：
+1. 回答鞋厂管理改善、精益制造、敏捷制造、利润改善、数字化和陪跑落地相关问题
+2. 帮助访客初步梳理交期、效率、品质、成本、库存和团队协作卡点
+3. 介绍正奇的服务体系、案例方向和预约诊断方式
+4. 对无法确认的信息，引导用户留下联系方式，由顾问进一步沟通
 
 公司信息：
 - 公司名称：莆田正奇鞋业咨询有限公司
-- 成立：2015年，深耕鞋业9年
-- 服务客户：100+企业
-- 核心服务：市场调研与分析、品牌战略规划、供应链优化
+- 服务对象：鞋厂老板、经营管理者、鞋类品牌客户
+- 核心服务：现场诊断、改善方案、陪跑落地、复盘机制、数字化管理建议
 - 联系方式：400-XXX-XXXX / contact@zhengqi-shoe.com
-- 地址：福建省莆田市XX区XX路XX号
 
 回答要求：
-- 专业、友好、有耐心
-- 使用中文回复
-- 可以适当使用emoji增加亲和力
-- 如果不确定的问题，建议联系专业顾问`;
+- 使用中文
+- 专业、克制、清晰
+- 不夸大承诺，不使用表情符号
+- 优先给出可执行的判断路径`;
 
     try {
       abortControllerRef.current = new AbortController();
@@ -60,10 +78,10 @@ export default function AIAssistant() {
           messages: [
             { role: 'system', content: systemPrompt },
             ...messages,
-            userMessage
-          ]
+            userMessage,
+          ],
         }),
-        signal: abortControllerRef.current.signal
+        signal: abortControllerRef.current.signal,
       });
 
       if (!response.ok) throw new Error('请求失败');
@@ -72,13 +90,13 @@ export default function AIAssistant() {
       if (!reader) throw new Error('无法读取响应');
 
       let fullContent = '';
-      
+
       while (true) {
         const { done, value } = await reader.read();
         if (done) break;
 
-        const text = new TextDecoder().decode(value);
-        const lines = text.split('\n').filter(line => line.startsWith('data:'));
+        const textChunk = new TextDecoder().decode(value);
+        const lines = textChunk.split('\n').filter((line) => line.startsWith('data:'));
 
         for (const line of lines) {
           const data = line.replace('data:', '').trim();
@@ -97,20 +115,17 @@ export default function AIAssistant() {
         }
       }
 
-      setMessages(prev => [...prev, { role: 'assistant', content: fullContent }]);
+      setMessages((prev) => [...prev, { role: 'assistant', content: fullContent }]);
       setStreamingContent('');
-
     } catch (error: unknown) {
       if (error instanceof Error && error.name !== 'AbortError') {
-        setMessages(prev => [...prev, { 
-          role: 'assistant', 
-          content: `抱歉，出现了一些问题：${error.message}\n\n请稍后重试或联系我们的专业顾问：400-XXX-XXXX` 
-        }]);
-      } else if (!(error instanceof Error)) {
-        setMessages(prev => [...prev, {
-          role: 'assistant',
-          content: '抱歉，出现了一些问题。\n\n请稍后重试或联系我们的专业顾问：400-XXX-XXXX'
-        }]);
+        setMessages((prev) => [
+          ...prev,
+          {
+            role: 'assistant',
+            content: `抱歉，当前暂时无法完成回复：${error.message}\n\n你也可以直接联系顾问：400-XXX-XXXX`,
+          },
+        ]);
       }
     } finally {
       setIsTyping(false);
@@ -122,7 +137,7 @@ export default function AIAssistant() {
   const handleStop = () => {
     abortControllerRef.current?.abort();
     if (streamingContent) {
-      setMessages(prev => [...prev, { role: 'assistant', content: streamingContent + '\n\n*(已停止生成)*' }]);
+      setMessages((prev) => [...prev, { role: 'assistant', content: `${streamingContent}\n\n(已停止生成)` }]);
       setStreamingContent('');
     }
     setIsTyping(false);
@@ -132,75 +147,72 @@ export default function AIAssistant() {
     <>
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className={`fixed bottom-8 right-8 z-50 flex h-16 w-16 items-center justify-center rounded-full shadow-2xl transition-all duration-300 ${
-          isOpen ? 'scale-90 bg-slate-700' : 'bg-white text-sky-700 ring-1 ring-sky-100 hover:-translate-y-1 hover:scale-105 hover:shadow-sky-200'
+        className={`fixed bottom-8 right-8 z-50 flex h-16 w-16 items-center justify-center rounded-full shadow-2xl transition duration-300 ${
+          isOpen
+            ? 'scale-90 bg-slate-800 text-white'
+            : 'animate-signal-ring bg-slate-950 text-cyan-200 ring-1 ring-cyan-200/30 hover:-translate-y-1 hover:bg-cyan-700'
         }`}
-        style={{ animation: isOpen ? 'none' : 'pulse 2s infinite' }}
         aria-label={isOpen ? '关闭智能助手' : '打开智能助手'}
       >
         {isOpen ? (
-          <svg className="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+          <svg className="h-7 w-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18 18 6M6 6l12 12" />
           </svg>
         ) : (
-          <span className="relative grid h-12 w-12 place-items-center rounded-full bg-sky-50">
-            <svg viewBox="0 0 48 48" className="h-8 w-8" fill="none" aria-hidden="true">
-              <path d="M16 19h16a8 8 0 0 1 8 8v3a8 8 0 0 1-8 8H16a8 8 0 0 1-8-8v-3a8 8 0 0 1 8-8Z" stroke="currentColor" strokeWidth="3" />
-              <path d="M24 19v-6M18 13h12M17 29h.1M31 29h.1" stroke="currentColor" strokeWidth="3" strokeLinecap="round" />
-              <path d="M19 34h10" stroke="currentColor" strokeWidth="3" strokeLinecap="round" />
-            </svg>
-            <span className="absolute right-1 top-1 h-3 w-3 rounded-full border-2 border-white bg-emerald-400"></span>
+          <span className="relative grid h-12 w-12 place-items-center rounded-full bg-white/8">
+            <ConsultantMark />
+            <span className="absolute right-0.5 top-0.5 h-3 w-3 rounded-full border-2 border-slate-950 bg-cyan-300" />
           </span>
         )}
       </button>
 
       {isOpen && (
-        <div className="fixed bottom-28 right-8 w-96 h-[580px] bg-white rounded-3xl shadow-2xl z-50 flex flex-col overflow-hidden border border-gray-200">
-          <div className="bg-gradient-to-r from-blue-600 via-blue-500 to-cyan-500 p-5 text-white relative">
-            <div className="flex justify-between items-start mb-2">
+        <div className="fixed bottom-28 right-4 z-50 flex h-[580px] w-[calc(100vw-2rem)] max-w-[400px] flex-col overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-2xl md:right-8">
+          <div className="relative bg-slate-950 p-5 text-white">
+            <div className="flex items-start justify-between gap-4">
               <div className="flex items-center gap-3">
-                <span className="grid h-11 w-11 place-items-center rounded-lg bg-white/15">
-                  <svg viewBox="0 0 48 48" className="h-7 w-7" fill="none" aria-hidden="true">
-                    <path d="M14 18h20a8 8 0 0 1 8 8v2a8 8 0 0 1-8 8H21l-8 6v-6a7 7 0 0 1-7-7v-3a8 8 0 0 1 8-8Z" stroke="currentColor" strokeWidth="3" strokeLinejoin="round" />
-                    <path d="M18 27h.1M24 27h.1M30 27h.1" stroke="currentColor" strokeWidth="3" strokeLinecap="round" />
-                  </svg>
+                <span className="grid h-11 w-11 place-items-center rounded-lg bg-cyan-300/12 text-cyan-200 ring-1 ring-cyan-200/20">
+                  <ConsultantMark className="h-7 w-7" />
                 </span>
                 <div>
-                  <h3 className="font-bold text-lg">通义千问 AI 助手</h3>
-                  <p className="text-xs text-blue-100">莆田正奇鞋业咨询</p>
+                  <h3 className="text-lg font-black">正奇咨询助手</h3>
+                  <p className="text-xs text-slate-300">鞋厂管理改善初步沟通</p>
                 </div>
               </div>
-              <button onClick={() => setIsOpen(false)} className="w-7 h-7 rounded-full bg-white/20 hover:bg-white/30 flex items-center justify-center transition">
-                ✕
+              <button
+                onClick={() => setIsOpen(false)}
+                className="grid h-8 w-8 place-items-center rounded-full bg-white/10 text-white transition hover:bg-white/20"
+                aria-label="关闭智能助手"
+              >
+                ×
               </button>
             </div>
-            <p className={`text-xs flex items-center gap-2 ${isTyping ? 'text-yellow-200' : 'text-green-200'}`}>
-              <span className={`w-2 h-2 rounded-full ${isTyping ? 'bg-yellow-400 animate-pulse' : 'bg-green-400'} animate-pulse`}></span>
-              {isTyping ? '正在思考中...' : '在线 · 智能对话'}
+            <p className={`mt-4 flex items-center gap-2 text-xs ${isTyping ? 'text-amber-200' : 'text-cyan-200'}`}>
+              <span className={`h-2 w-2 rounded-full ${isTyping ? 'bg-amber-300' : 'bg-cyan-300'} animate-pulse`} />
+              {isTyping ? '正在分析问题...' : '在线 · 可咨询服务与诊断方向'}
             </p>
           </div>
 
-          <div className="flex-1 overflow-y-auto p-4 space-y-4 bg-gradient-to-b from-gray-50 to-white">
+          <div className="flex-1 space-y-4 overflow-y-auto bg-slate-50 p-4">
             {messages.length === 0 && !streamingContent && (
-              <div className="text-center py-10">
-                <div className="text-6xl mb-4">👋</div>
-                <h4 className="font-bold text-xl text-gray-800 mb-2">你好！我是AI助手</h4>
-                <p className="text-sm text-gray-500 mb-6">基于通义千问大模型，可以回答任何问题</p>
-                
-                <div className="space-y-2 text-left max-w-xs mx-auto">
-                  {[
-                    { q: '怎么实现鞋厂数字化？', icon: '🏭' },
-                    { q: '你们有哪些服务？', icon: '💼' },
-                    { q: '看看成功案例', icon: '🏆' },
-                    { q: '如何联系你们？', icon: '📞' }
-                  ].map((item, i) => (
-                    <button key={i}
-                      onClick={() => { setMessage(item.q); setTimeout(handleSend, 100); }}
-                      className="block w-full px-4 py-3 bg-white border border-gray-200 rounded-xl text-sm hover:bg-blue-50 hover:border-blue-300 transition-all group text-left"
+              <div className="py-6">
+                <div className="mx-auto mb-5 grid h-16 w-16 place-items-center rounded-2xl bg-white text-cyan-700 shadow-sm ring-1 ring-slate-200">
+                  <ConsultantMark className="h-9 w-9" />
+                </div>
+                <h4 className="text-center text-xl font-black text-slate-950">先描述一个现场问题</h4>
+                <p className="mx-auto mt-2 max-w-xs text-center text-sm leading-6 text-slate-600">
+                  我可以帮你初步拆解交期、效率、品质、成本和数字化相关问题。
+                </p>
+
+                <div className="mx-auto mt-6 max-w-sm space-y-2">
+                  {quickQuestions.map((question) => (
+                    <button
+                      key={question}
+                      onClick={() => handleSend(question)}
+                      className="group flex w-full items-center justify-between rounded-lg border border-slate-200 bg-white px-4 py-3 text-left text-sm font-semibold text-slate-700 transition hover:-translate-y-0.5 hover:border-cyan-200 hover:text-cyan-700 hover:shadow-sm"
                     >
-                      <span className="mr-2">{item.icon}</span>
-                      {item.q}
-                      <span className="float-right opacity-0 group-hover:opacity-100 transition-opacity">→</span>
+                      <span>{question}</span>
+                      <span className="text-slate-400 transition group-hover:translate-x-1 group-hover:text-cyan-700">→</span>
                     </button>
                   ))}
                 </div>
@@ -209,22 +221,24 @@ export default function AIAssistant() {
 
             {messages.map((msg, i) => (
               <div key={i} className={`flex ${msg.role === 'user' ? 'justify-end' : 'justify-start'}`}>
-                <div className={`max-w-[85%] rounded-2xl px-4 py-3 shadow-sm ${
-                  msg.role === 'user' 
-                    ? 'bg-gradient-to-br from-blue-600 to-blue-500 text-white rounded-br-md' 
-                    : 'bg-white border border-gray-200 rounded-bl-md'
-                }`}>
-                  <div className="text-sm leading-relaxed whitespace-pre-wrap">{msg.content}</div>
+                <div
+                  className={`max-w-[85%] rounded-2xl px-4 py-3 text-sm leading-7 shadow-sm ${
+                    msg.role === 'user'
+                      ? 'rounded-br-md bg-slate-950 text-white'
+                      : 'rounded-bl-md border border-slate-200 bg-white text-slate-800'
+                  }`}
+                >
+                  <div className="whitespace-pre-wrap">{msg.content}</div>
                 </div>
               </div>
             ))}
 
             {streamingContent && (
               <div className="flex justify-start">
-                <div className="max-w-[85%] bg-white border-2 border-blue-300 rounded-2xl rounded-bl-md px-4 py-3 shadow-lg">
-                  <div className="text-sm leading-relaxed whitespace-pre-wrap text-gray-800">
+                <div className="max-w-[85%] rounded-2xl rounded-bl-md border border-cyan-200 bg-white px-4 py-3 text-sm leading-7 text-slate-800 shadow-sm">
+                  <div className="whitespace-pre-wrap">
                     {streamingContent}
-                    <span className="inline-block w-0.5 h-4 bg-blue-600 animate-pulse ml-0.5 align-middle"></span>
+                    <span className="ml-0.5 inline-block h-4 w-0.5 animate-pulse bg-cyan-700 align-middle" />
                   </div>
                 </div>
               </div>
@@ -233,35 +247,36 @@ export default function AIAssistant() {
             <div ref={chatEndRef} />
           </div>
 
-          <div className="p-4 bg-white border-t border-gray-100">
+          <div className="border-t border-slate-200 bg-white p-4">
             {isTyping && (
-              <button onClick={handleStop} className="w-full mb-2 py-2 bg-red-50 text-red-600 rounded-lg text-sm font-medium hover:bg-red-100 transition flex items-center justify-center gap-2">
-                ⏹️ 停止生成
+              <button
+                onClick={handleStop}
+                className="mb-2 w-full rounded-lg bg-red-50 py-2 text-sm font-bold text-red-600 transition hover:bg-red-100"
+              >
+                停止生成
               </button>
             )}
-            
+
             <div className="flex gap-2">
               <input
                 type="text"
                 value={message}
                 onChange={(e) => setMessage(e.target.value)}
                 onKeyDown={(e) => e.key === 'Enter' && !e.shiftKey && handleSend()}
-                placeholder={isTyping ? "AI正在思考中..." : "输入任何问题..."}
+                placeholder={isTyping ? '正在分析中...' : '输入你的问题...'}
                 disabled={isTyping}
-                className="flex-1 px-4 py-3 border-2 border-gray-200 rounded-xl focus:border-blue-500 focus:ring-2 focus:ring-blue-100 outline-none disabled:bg-gray-50 disabled:text-gray-400 transition-all"
+                className="min-w-0 flex-1 rounded-lg border border-slate-200 px-4 py-3 text-sm outline-none transition placeholder:text-slate-500 focus:border-cyan-600 focus:ring-4 focus:ring-cyan-100 disabled:bg-slate-50 disabled:text-slate-400"
               />
-              <button 
-                onClick={handleSend} 
+              <button
+                onClick={() => handleSend()}
                 disabled={!message.trim() || isTyping}
-                className="px-6 bg-gradient-to-r from-blue-600 to-cyan-500 text-white rounded-xl font-semibold hover:shadow-lg disabled:opacity-50 disabled:cursor-not-allowed transition-all transform active:scale-95"
+                className="rounded-lg bg-cyan-700 px-5 text-sm font-black text-white transition hover:bg-slate-950 disabled:cursor-not-allowed disabled:opacity-50"
               >
                 发送
               </button>
             </div>
-            
-            <p className="text-xs text-gray-400 mt-2 text-center">
-              Powered by 通义千问 (阿里) · 数据仅用于本地对话
-            </p>
+
+            <p className="mt-2 text-center text-xs text-slate-400">AI 回复仅作初步参考，具体方案以顾问诊断为准</p>
           </div>
         </div>
       )}

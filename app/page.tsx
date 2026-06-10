@@ -1,94 +1,81 @@
 'use client';
 
-import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
+import BottomCTA from './components/BottomCTA';
 
 export default function Home() {
-  const dashboardItems = [
-    { value: '订单', label: '交期预警', tone: 'bg-sky-50 text-sky-700' },
-    { value: '现场', label: '效率追踪', tone: 'bg-teal-50 text-teal-700' },
-    { value: '成本', label: '利润复盘', tone: 'bg-amber-50 text-amber-700' },
-  ];
-
   const paths = [
     {
-      title: '先看问题',
+      title: '现场诊断',
+      desc: '从订单结构、瓶颈工序、品质波动和交付风险入手，把感受型问题转成清单。',
       icon: (
         <svg viewBox="0 0 48 48" className="h-8 w-8" fill="none" aria-hidden="true">
-          <path d="M10 12h28v20H10z" stroke="currentColor" strokeWidth="3" strokeLinejoin="round" />
-          <path d="M15 38h18M24 32v6M17 19h14M17 25h8" stroke="currentColor" strokeWidth="3" strokeLinecap="round" />
+          <path d="M10 12h28v24H10z" stroke="currentColor" strokeWidth="3" strokeLinejoin="round" />
+          <path d="M16 20h16M16 27h9M31 31l6 6" stroke="currentColor" strokeWidth="3" strokeLinecap="round" />
         </svg>
       ),
-      tone: 'from-sky-500 to-blue-600',
-      desc: '用现场走查和数据访谈，找出交付、效率、品质、成本里的关键堵点。',
     },
     {
-      title: '再排路径',
+      title: '路径排布',
+      desc: '把改善动作拆成负责人、时间表、验证指标和复盘节点，让团队知道下一步怎么做。',
       icon: (
         <svg viewBox="0 0 48 48" className="h-8 w-8" fill="none" aria-hidden="true">
           <path d="M12 14h8v8h-8zM28 14h8v8h-8zM12 30h8v8h-8zM28 30h8v8h-8z" stroke="currentColor" strokeWidth="3" strokeLinejoin="round" />
           <path d="M20 18h8M16 22v8M32 22v8M20 34h8" stroke="currentColor" strokeWidth="3" strokeLinecap="round" />
         </svg>
       ),
-      tone: 'from-teal-500 to-cyan-600',
-      desc: '把改善动作拆成负责人、时间表和验证指标，让团队知道下一步怎么做。',
     },
     {
-      title: '最后复盘',
+      title: '陪跑复盘',
+      desc: '围绕订单表现、现场效率和经营结果复盘，保留有效做法，沉淀为管理机制。',
       icon: (
         <svg viewBox="0 0 48 48" className="h-8 w-8" fill="none" aria-hidden="true">
-          <path d="M12 34V14M22 34V22M32 34V10M40 38H8" stroke="currentColor" strokeWidth="3" strokeLinecap="round" />
-          <path d="M12 14c6 8 13 12 24 8" stroke="currentColor" strokeWidth="3" strokeLinecap="round" />
+          <path d="M12 36V14M22 36V24M32 36V10M40 39H8" stroke="currentColor" strokeWidth="3" strokeLinecap="round" />
+          <path d="M12 18c6 8 14 11 25 5" stroke="currentColor" strokeWidth="3" strokeLinecap="round" />
         </svg>
       ),
-      tone: 'from-amber-500 to-orange-600',
-      desc: '围绕订单表现和经营结果复盘，保留有效做法，沉淀为管理机制。',
     },
   ];
 
   return (
     <div className="min-h-screen bg-white text-slate-900">
-      <section className="relative overflow-hidden bg-[linear-gradient(135deg,#f8fafc_0%,#eef8ff_52%,#ffffff_100%)]">
-        <div className="container mx-auto grid min-h-[620px] max-w-7xl items-center gap-12 px-6 py-16 md:px-8 lg:grid-cols-[1.02fr_0.98fr] lg:px-12">
-          <div className="relative z-10 max-w-3xl animate-fadeInUp">
-            <h1 className="mb-6 animate-fadeInUp text-4xl font-black leading-tight text-slate-950 md:text-5xl" style={{ animationDelay: '80ms' }}>
+      <section className="relative overflow-hidden bg-[linear-gradient(135deg,#f8fafc_0%,#eef8ff_44%,#ffffff_100%)]">
+        <div className="container mx-auto grid min-h-[660px] max-w-7xl items-center gap-12 px-6 py-16 md:px-8 lg:grid-cols-[1.02fr_0.98fr] lg:px-12">
+          <div className="relative z-10 max-w-3xl animate-rise-soft">
+            <p className="mb-5 inline-flex rounded-full border border-slate-200 bg-white px-4 py-2 text-sm font-bold text-cyan-700 shadow-sm">
+              莆田鞋业管理咨询
+            </p>
+            <h1 className="text-balance text-4xl font-black leading-tight text-slate-950 md:text-6xl">
               从一张诊断表开始，重排鞋厂增长节奏
             </h1>
-            <p className="mb-9 max-w-2xl animate-fadeInUp text-lg leading-8 text-slate-600 md:text-xl" style={{ animationDelay: '200ms' }}>
-              用更清晰的诊断路径，把交付、效率、成本和团队协作里的关键问题逐步拆开、排清、追到底。
+            <p className="mt-6 max-w-2xl text-pretty text-lg leading-8 text-slate-600 md:text-xl">
+              用清晰的现场诊断和陪跑机制，把交付、效率、成本和团队协作里的关键问题拆开、排清、追到底。
             </p>
-            <div className="flex animate-fadeInUp flex-col gap-3 sm:flex-row" style={{ animationDelay: '320ms' }}>
-              <Link
-                href="/contact"
-                className="group inline-flex items-center justify-center rounded-lg bg-sky-600 px-8 py-4 text-base font-black text-white shadow-lg shadow-sky-100 transition duration-300 hover:-translate-y-1 hover:bg-sky-700 hover:shadow-xl hover:shadow-sky-200"
-              >
+            <div className="mt-9 flex flex-col gap-3 sm:flex-row">
+              <Link href="/contact" className="group inline-flex items-center justify-center rounded-lg bg-slate-950 px-8 py-4 text-base font-black text-white shadow-lg shadow-slate-200 transition duration-300 hover:-translate-y-1 hover:bg-cyan-700">
                 预约诊断
-                <span className="ml-3 text-xl transition-transform duration-300 group-hover:translate-x-1">→</span>
+                <span className="ml-3 transition-transform duration-300 group-hover:translate-x-1">→</span>
               </Link>
-              <Link
-                href="/services"
-                className="inline-flex items-center justify-center rounded-lg border border-slate-200 bg-white px-8 py-4 text-base font-black text-slate-800 shadow-sm transition duration-300 hover:-translate-y-1 hover:border-sky-200 hover:text-sky-700 hover:shadow-lg hover:shadow-slate-100"
-              >
-                看改善路径
+              <Link href="/services" className="inline-flex items-center justify-center rounded-lg border border-slate-200 bg-white px-8 py-4 text-base font-black text-slate-800 shadow-sm transition duration-300 hover:-translate-y-1 hover:border-cyan-200 hover:text-cyan-700">
+                查看改善路径
               </Link>
             </div>
           </div>
 
-          <div className="relative animate-fadeInRight">
-            <div className="relative h-[360px] animate-scaleIn overflow-hidden rounded-lg border border-white bg-white shadow-2xl shadow-sky-100 md:h-[470px]" style={{ animationDelay: '180ms' }}>
+          <div className="relative animate-drift-in">
+            <div className="relative h-[370px] overflow-hidden rounded-lg border border-white bg-white shadow-2xl shadow-sky-100 md:h-[500px]">
               <Image
                 src="https://images.unsplash.com/photo-1497366811353-6870744d04b2?w=1000&h=1200&fit=crop&q=80"
                 alt="鞋企经营诊断讨论"
                 fill
                 className="object-cover transition duration-700 hover:scale-105"
-                priority
                 sizes="(max-width: 1024px) 100vw, 45vw"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-white/70 via-white/5 to-transparent"></div>
-              <div className="absolute bottom-5 left-5 right-5 animate-fadeInUp rounded-lg border border-white/80 bg-white/90 p-4 text-slate-900 shadow-xl shadow-slate-200/70 backdrop-blur transition duration-300 hover:-translate-y-1 hover:bg-white md:bottom-6 md:left-6 md:right-6 md:p-5" style={{ animationDelay: '520ms' }}>
-                <p className="text-sm font-bold text-sky-700">现场问题，经营语言表达</p>
-                <p className="mt-2 max-w-md text-xl font-black leading-snug md:text-2xl">把“感觉不顺”变成可追踪的改善任务。</p>
+              <div className="absolute inset-0 bg-gradient-to-t from-slate-950/45 via-transparent to-transparent" />
+              <div className="absolute bottom-5 left-5 right-5 rounded-lg bg-white/95 p-5 text-slate-900 shadow-xl backdrop-blur">
+                <p className="text-sm font-bold text-cyan-700">现场问题，经营语言表达</p>
+                <p className="mt-2 text-xl font-black leading-snug md:text-2xl">把“感觉不顺”变成可追踪的改善任务。</p>
               </div>
             </div>
           </div>
@@ -97,8 +84,8 @@ export default function Home() {
 
       <section className="bg-white py-20 md:py-24">
         <div className="container mx-auto max-w-7xl px-6 md:px-8 lg:px-12">
-          <div className="mb-12 max-w-3xl animate-fadeInUp">
-            <h2 className="text-3xl font-black leading-tight text-slate-950 md:text-4xl">
+          <div className="mb-12 max-w-3xl animate-rise-soft">
+            <h2 className="text-balance text-3xl font-black leading-tight text-slate-950 md:text-4xl">
               不是展示口号，而是展示一次改善如何发生
             </h2>
           </div>
@@ -106,26 +93,14 @@ export default function Home() {
             {paths.map((item, i) => (
               <div
                 key={item.title}
-                className="group relative animate-scaleIn overflow-hidden rounded-lg border border-slate-200 bg-white p-7 shadow-sm transition duration-300 hover:-translate-y-2 hover:border-sky-200 hover:shadow-xl hover:shadow-slate-200"
-                style={{ animationDelay: `${i * 130}ms` }}
+                className="group animate-rise-soft rounded-lg border border-slate-200 bg-white p-7 shadow-sm transition duration-300 hover:-translate-y-2 hover:border-cyan-200 hover:shadow-xl hover:shadow-slate-200"
+                style={{ animationDelay: `${i * 120}ms` }}
               >
-                <div className={`absolute inset-x-0 top-0 h-1.5 bg-gradient-to-r ${item.tone}`}></div>
-                <div className="mb-8 flex items-start justify-between gap-4">
-                  <div className={`grid h-16 w-16 place-items-center rounded-lg bg-gradient-to-br ${item.tone} text-white shadow-lg shadow-slate-200 transition duration-300 group-hover:scale-110 group-hover:-translate-y-1`}>
-                    {item.icon}
-                  </div>
-                  <div className="text-4xl font-black text-slate-100 transition duration-300 group-hover:text-sky-100">
-                    0{i + 1}
-                  </div>
+                <div className="mb-8 grid h-16 w-16 place-items-center rounded-lg bg-slate-950 text-white transition duration-300 group-hover:-translate-y-1 group-hover:bg-cyan-700">
+                  {item.icon}
                 </div>
                 <h3 className="text-2xl font-black text-slate-950">{item.title}</h3>
                 <p className="mt-4 text-base leading-7 text-slate-600">{item.desc}</p>
-                <div className="mt-7 h-1.5 overflow-hidden rounded-full bg-slate-100">
-                  <div
-                    className={`h-full rounded-full bg-gradient-to-r ${item.tone} transition-all duration-700 group-hover:w-full`}
-                    style={{ width: `${62 + i * 14}%` }}
-                  ></div>
-                </div>
               </div>
             ))}
           </div>
@@ -133,49 +108,45 @@ export default function Home() {
       </section>
 
       <section className="overflow-hidden bg-slate-50 py-20 md:py-24">
-        <div className="container mx-auto grid max-w-7xl items-center gap-12 px-6 md:px-8 lg:grid-cols-[0.95fr_1.05fr] lg:px-12">
-          <div className="relative animate-fadeInLeft">
-            <div className="relative animate-scaleIn overflow-hidden rounded-lg border border-slate-200 bg-white shadow-xl shadow-slate-200" style={{ animationDelay: '120ms' }}>
-              <Image
-                src="https://images.unsplash.com/photo-1557804506-669a67965ba0?w=1000&h=780&fit=crop&q=80"
-                alt="经营复盘会议"
-                width={1000}
-                height={780}
-                className="aspect-[4/3] w-full object-cover transition duration-700 hover:scale-105"
-                sizes="(max-width: 1024px) 100vw, 45vw"
-              />
-            </div>
+        <div className="container mx-auto grid max-w-7xl items-center gap-12 px-6 md:px-8 lg:grid-cols-[0.9fr_1.1fr] lg:px-12">
+          <div className="relative animate-drift-in overflow-hidden rounded-lg border border-slate-200 bg-white shadow-xl shadow-slate-200">
+            <Image
+              src="https://images.unsplash.com/photo-1557804506-669a67965ba0?w=1000&h=780&fit=crop&q=80"
+              alt="经营复盘会议"
+              width={1000}
+              height={780}
+              className="aspect-[4/3] w-full object-cover transition duration-700 hover:scale-105"
+              sizes="(max-width: 1024px) 100vw, 45vw"
+            />
           </div>
-          <div className="animate-fadeInRight">
-            <h2 className="mb-6 animate-fadeInUp text-3xl font-black leading-tight text-slate-950 md:text-4xl" style={{ animationDelay: '120ms' }}>
+          <div className="animate-rise-soft">
+            <h2 className="text-balance text-3xl font-black leading-tight text-slate-950 md:text-4xl">
               适合先从哪一类问题切入？
             </h2>
-            <p className="mb-8 animate-fadeInUp text-lg leading-9 text-slate-600" style={{ animationDelay: '240ms' }}>
+            <p className="mt-6 text-pretty text-lg leading-9 text-slate-600">
               如果企业还没确定要做完整项目，可以先从交付、效率、利润三个入口做轻量判断，再决定后续方案深度。
             </p>
-            <div className="grid gap-4 sm:grid-cols-3">
-              {dashboardItems.map((item, i) => (
-                <div
-                  key={item.label}
-                  className={`animate-scaleIn rounded-lg p-5 transition duration-300 hover:-translate-y-2 hover:scale-[1.02] hover:shadow-lg ${item.tone}`}
-                  style={{ animationDelay: `${320 + i * 120}ms` }}
-                >
-                  <div className="text-2xl font-black">{item.value}</div>
-                  <div className="mt-2 text-sm font-bold">{item.label}</div>
+            <div className="mt-8 grid gap-4 sm:grid-cols-3">
+              {[
+                ['订单', '交期预警'],
+                ['现场', '效率追踪'],
+                ['成本', '利润复盘'],
+              ].map(([value, label]) => (
+                <div key={label} className="rounded-lg border border-slate-200 bg-white p-5 shadow-sm transition duration-300 hover:-translate-y-2 hover:border-cyan-200">
+                  <div className="text-2xl font-black text-slate-950">{value}</div>
+                  <div className="mt-2 text-sm font-bold text-slate-500">{label}</div>
                 </div>
               ))}
             </div>
-            <Link
-              href="/cases"
-              className="group mt-8 inline-flex animate-fadeInUp items-center rounded-lg bg-sky-600 px-7 py-3.5 text-base font-black text-white transition duration-300 hover:-translate-y-1 hover:bg-sky-700 hover:shadow-lg hover:shadow-sky-100"
-              style={{ animationDelay: '620ms' }}
-            >
+            <Link href="/cases" className="group mt-8 inline-flex items-center rounded-lg bg-cyan-700 px-7 py-3.5 text-base font-black text-white transition duration-300 hover:-translate-y-1 hover:bg-slate-950">
               查看改善成果
-              <span className="ml-3 text-xl transition-transform duration-300 group-hover:translate-x-1">→</span>
+              <span className="ml-3 transition-transform duration-300 group-hover:translate-x-1">→</span>
             </Link>
           </div>
         </div>
       </section>
+
+      <BottomCTA />
     </div>
   );
 }

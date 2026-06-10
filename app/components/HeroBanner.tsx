@@ -51,7 +51,7 @@ export default function HeroBanner({
             fill
             className="object-cover transition-transform duration-[4000ms] group-hover:scale-110"
             sizes="100vw"
-            priority
+            preload
           />
           {/* 深色遮罩 */}
           <div className="absolute inset-0 bg-gradient-to-r from-blue-900/95 via-blue-800/85 to-blue-900/90"></div>
