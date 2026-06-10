@@ -186,12 +186,29 @@ export default function ContactPage() {
       </section>
 
       <BottomCTA
-        eyebrow="保密沟通"
         title="把复杂问题先讲清楚，方案才会准确"
         description="我们会围绕企业现状做初步判断，所有沟通内容仅用于诊断和方案建议。"
         primaryLabel="提交咨询"
         secondaryHref="/about"
         secondaryLabel="了解正奇"
+        backgroundImage="https://images.unsplash.com/photo-1552664730-d307ca884978?w=1800&h=900&fit=crop&q=80"
+        cards={[
+          {
+            label: '准备现状',
+            text: '企业规模、月产能、订单类型和主要客户。',
+            image: 'https://images.unsplash.com/photo-1556761175-b413da4baf72?w=600&h=460&fit=crop&q=80',
+          },
+          {
+            label: '说明卡点',
+            text: '交期、效率、品质、成本里最影响经营的一项。',
+            image: 'https://images.unsplash.com/photo-1557804506-669a67965ba0?w=600&h=460&fit=crop&q=80',
+          },
+          {
+            label: '确认目标',
+            text: '先明确希望三个月内看到什么变化。',
+            image: 'https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=600&h=460&fit=crop&q=80',
+          },
+        ]}
       />
     </div>
   );

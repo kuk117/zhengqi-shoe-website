@@ -93,11 +93,28 @@ export default function CasesPage() {
       </section>
 
       <BottomCTA
-        eyebrow="案例转化"
         title="你的现场问题，也可以先变成一份诊断清单"
         description="说明企业规模、订单结构和当前卡点，我们先判断最值得优先改善的方向，再匹配服务深度。"
         secondaryHref="/services"
         secondaryLabel="查看服务"
+        backgroundImage="https://images.unsplash.com/photo-1549298916-b41d501d3772?w=1800&h=900&fit=crop&q=80"
+        cards={[
+          {
+            label: '交期结果',
+            text: '从订单节奏和异常响应看改善空间。',
+            image: 'https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=600&h=460&fit=crop&q=80',
+          },
+          {
+            label: '效率结果',
+            text: '从瓶颈工序和班组节拍看提升路径。',
+            image: 'https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a?w=600&h=460&fit=crop&q=80',
+          },
+          {
+            label: '库存结果',
+            text: '从补货、周转和订单结构看经营压力。',
+            image: 'https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=600&h=460&fit=crop&q=80',
+          },
+        ]}
       />
     </div>
   );

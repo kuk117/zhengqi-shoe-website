@@ -9,6 +9,12 @@ type BottomCTAProps = {
   primaryLabel?: string;
   secondaryHref?: string;
   secondaryLabel?: string;
+  backgroundImage?: string;
+  cards?: {
+    label: string;
+    text: string;
+    image: string;
+  }[];
 };
 
 const signals = [
@@ -36,12 +42,14 @@ export default function BottomCTA({
   primaryLabel = '预约诊断',
   secondaryHref = '/services',
   secondaryLabel = '查看服务体系',
+  backgroundImage = 'https://images.unsplash.com/photo-1557804506-669a67965ba0?w=1800&h=900&fit=crop&q=80',
+  cards = signals,
 }: BottomCTAProps) {
   return (
     <section className="section-flow relative overflow-hidden bg-[linear-gradient(135deg,#f8fafc_0%,#ecfeff_42%,#f6f7f4_100%)] py-16 text-slate-950 md:py-20">
       <div className="absolute inset-0 opacity-80">
         <Image
-          src="https://images.unsplash.com/photo-1557804506-669a67965ba0?w=1800&h=900&fit=crop&q=80"
+          src={backgroundImage}
           alt=""
           fill
           className="animate-kenburns object-cover opacity-15"
@@ -77,7 +85,7 @@ export default function BottomCTA({
           </div>
 
           <div className="grid gap-4 sm:grid-cols-3">
-            {signals.map((item, index) => (
+            {cards.map((item, index) => (
               <article
                 key={item.label}
                 className="group animate-cascade overflow-hidden rounded-lg border border-white/80 bg-white/85 shadow-lg shadow-slate-200/70 backdrop-blur transition duration-500 hover:-translate-y-2 hover:shadow-2xl hover:shadow-cyan-100"

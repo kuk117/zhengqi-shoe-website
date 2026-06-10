@@ -143,7 +143,28 @@ export default function Home() {
         </div>
       </section>
 
-      <BottomCTA />
+      <BottomCTA
+        title="先从一个最卡的环节开始，把改善做成闭环"
+        description="首页收口不再重复服务列表，而是引导访客把当前最影响经营结果的问题说清楚，形成第一次诊断入口。"
+        backgroundImage="https://images.unsplash.com/photo-1497366811353-6870744d04b2?w=1800&h=900&fit=crop&q=80"
+        cards={[
+          {
+            label: '交付卡点',
+            text: '识别计划、物料和产线节拍中的延误源头。',
+            image: 'https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=600&h=460&fit=crop&q=80',
+          },
+          {
+            label: '现场节奏',
+            text: '把效率波动转成班组能跟进的日常指标。',
+            image: 'https://images.unsplash.com/photo-1565514020179-026b92b84bb6?w=600&h=460&fit=crop&q=80',
+          },
+          {
+            label: '经营复盘',
+            text: '让改善结果回到成本、利润和团队协同。',
+            image: 'https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=600&h=460&fit=crop&q=80',
+          },
+        ]}
+      />
     </div>
   );
 }

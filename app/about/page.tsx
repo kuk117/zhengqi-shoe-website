@@ -85,9 +85,26 @@ export default function AboutPage() {
       </section>
 
       <BottomCTA
-        eyebrow="了解我们如何开始"
         title="先判断问题，再决定项目深度"
         description="如果你正在面对交付延期、效率波动、成本压力或团队协作问题，可以先沟通现状，让顾问判断最值得优先改善的入口。"
+        backgroundImage="https://images.unsplash.com/photo-1553877522-43269d4ea984?w=1800&h=900&fit=crop&q=80"
+        cards={[
+          {
+            label: '团队经验',
+            text: '来自制造现场的判断，不停留在管理概念。',
+            image: 'https://images.unsplash.com/photo-1552664730-d307ca884978?w=600&h=460&fit=crop&q=80',
+          },
+          {
+            label: '方法沉淀',
+            text: '诊断、方案、陪跑、复盘形成连续工作法。',
+            image: 'https://images.unsplash.com/photo-1557804506-669a67965ba0?w=600&h=460&fit=crop&q=80',
+          },
+          {
+            label: '结果导向',
+            text: '用交付、效率、品质、成本验证改善价值。',
+            image: 'https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=600&h=460&fit=crop&q=80',
+          },
+        ]}
       />
     </div>
   );

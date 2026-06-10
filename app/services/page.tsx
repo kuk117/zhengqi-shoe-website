@@ -122,11 +122,28 @@ export default function ServicesPage() {
       </section>
 
       <BottomCTA
-        eyebrow="服务匹配"
         title="不确定该从哪一阶段开始？先做一次问题分层"
         description="我们会根据企业规模、订单结构和管理痛点判断适合从精益、敏捷、利润、数字化或陪跑落地哪一层切入。"
         secondaryHref="/cases"
         secondaryLabel="查看案例结果"
+        backgroundImage="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=1800&h=900&fit=crop&q=80"
+        cards={[
+          {
+            label: '精益入口',
+            text: '适合现场秩序、产线节拍和交付稳定性问题。',
+            image: 'https://images.unsplash.com/photo-1565514020179-026b92b84bb6?w=600&h=460&fit=crop&q=80',
+          },
+          {
+            label: '利润入口',
+            text: '适合报价、损耗、返工和成本核算不清。',
+            image: 'https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=600&h=460&fit=crop&q=80',
+          },
+          {
+            label: '数字入口',
+            text: '适合已经有管理基础，需要看板和数据闭环。',
+            image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&h=460&fit=crop&q=80',
+          },
+        ]}
       />
     </div>
   );
