@@ -38,12 +38,9 @@ export default function ServicesPage() {
 
   return (
     <div className="min-h-screen bg-white text-slate-900">
-      <section className="relative overflow-hidden bg-[linear-gradient(135deg,#f8fafc_0%,#ecfeff_48%,#ffffff_100%)]">
+      <section className="section-flow relative overflow-hidden bg-[linear-gradient(135deg,#f8fafc_0%,#ecfeff_48%,#ffffff_100%)]">
         <div className="container mx-auto flex min-h-[420px] max-w-7xl items-center px-6 py-16 text-center md:px-8 lg:px-12">
-          <div className="mx-auto max-w-4xl animate-rise-soft">
-            <p className="mb-5 inline-flex rounded-full border border-slate-200 bg-white px-4 py-2 text-sm font-bold text-cyan-700 shadow-sm">
-              服务体系
-            </p>
+          <div className="mx-auto max-w-4xl animate-hero-copy">
             <h1 className="text-balance text-4xl font-black leading-tight text-slate-950 md:text-6xl">
               “4+1” 企业进化升级体系
             </h1>
@@ -54,13 +51,13 @@ export default function ServicesPage() {
         </div>
       </section>
 
-      <section className="bg-white py-20 md:py-24">
+      <section className="section-flow bg-white pb-20 pt-20 md:pb-24 md:pt-24">
         <div className="container mx-auto max-w-7xl px-6 md:px-8 lg:px-12">
           <div className="grid gap-6 md:grid-cols-2">
             {serviceList.map((service, i) => (
               <article
                 key={service.title}
-                className="group animate-rise-soft overflow-hidden rounded-lg border border-slate-200 bg-white shadow-sm transition duration-500 hover:-translate-y-2 hover:border-cyan-200 hover:shadow-xl hover:shadow-slate-200"
+                className="group animate-cascade overflow-hidden rounded-lg border border-slate-200 bg-white shadow-sm transition duration-500 hover:-translate-y-2 hover:border-cyan-200 hover:shadow-xl hover:shadow-slate-200"
                 style={{ animationDelay: `${i * 100}ms` }}
               >
                 <div className="relative h-52 overflow-hidden">
@@ -91,26 +88,32 @@ export default function ServicesPage() {
             ))}
           </div>
 
-          <div className="mt-8 grid overflow-hidden rounded-lg border border-slate-200 bg-slate-950 text-white shadow-xl shadow-slate-200 lg:grid-cols-[0.95fr_1.05fr]">
+          <div className="mt-8 grid overflow-hidden rounded-lg border border-cyan-100 bg-[linear-gradient(135deg,#f8fafc_0%,#ecfeff_55%,#ffffff_100%)] text-slate-950 shadow-xl shadow-slate-200/70 lg:grid-cols-[0.95fr_1.05fr]">
             <div className="relative min-h-[280px]">
               <Image
                 src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=1200&h=760&fit=crop&q=80"
                 alt="顾问陪跑落地服务"
                 fill
-                className="object-cover opacity-80"
+                className="object-cover transition duration-700 hover:scale-105"
                 sizes="(max-width: 1024px) 100vw, 45vw"
               />
-              <div className="absolute inset-0 bg-gradient-to-r from-slate-950/55 to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-r from-white/10 via-transparent to-white/65" />
             </div>
             <div className="p-8 md:p-10 lg:p-12">
-              <p className="text-sm font-black text-cyan-300">陪跑落地服务</p>
-              <h2 className="mt-4 text-balance text-3xl font-black leading-tight md:text-4xl">
+              <h2 className="text-balance text-3xl font-black leading-tight md:text-4xl">
                 方案不是终点，落地才是改善的开始
               </h2>
-              <p className="mt-5 text-base leading-8 text-slate-300">
+              <p className="mt-5 text-base leading-8 text-slate-600">
                 专属顾问跟进现场执行，持续处理异常、验证数据、训练团队，让改善从一次项目变成企业自己的工作方式。
               </p>
-              <Link href="/contact" className="mt-8 inline-flex rounded-lg bg-cyan-400 px-7 py-3.5 font-black text-slate-950 transition hover:-translate-y-1 hover:bg-cyan-300">
+              <div className="mt-7 grid gap-3 sm:grid-cols-3">
+                {['驻厂辅导', '异常响应', '数据复盘'].map((item) => (
+                  <div key={item} className="rounded-lg border border-cyan-100 bg-white/80 px-4 py-3 text-center text-sm font-black text-cyan-800 shadow-sm backdrop-blur">
+                    {item}
+                  </div>
+                ))}
+              </div>
+              <Link href="/contact" className="mt-8 inline-flex rounded-lg bg-slate-950 px-7 py-3.5 font-black text-white transition hover:-translate-y-1 hover:bg-cyan-700">
                 咨询具体方案
               </Link>
             </div>

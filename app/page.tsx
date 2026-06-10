@@ -40,12 +40,9 @@ export default function Home() {
 
   return (
     <div className="min-h-screen bg-white text-slate-900">
-      <section className="relative overflow-hidden bg-[linear-gradient(135deg,#f8fafc_0%,#eef8ff_44%,#ffffff_100%)]">
+      <section className="section-flow relative overflow-hidden bg-[linear-gradient(135deg,#f8fafc_0%,#eef8ff_44%,#ffffff_100%)]">
         <div className="container mx-auto grid min-h-[660px] max-w-7xl items-center gap-12 px-6 py-16 md:px-8 lg:grid-cols-[1.02fr_0.98fr] lg:px-12">
-          <div className="relative z-10 max-w-3xl animate-rise-soft">
-            <p className="mb-5 inline-flex rounded-full border border-slate-200 bg-white px-4 py-2 text-sm font-bold text-cyan-700 shadow-sm">
-              莆田鞋业管理咨询
-            </p>
+          <div className="relative z-10 max-w-3xl animate-hero-copy">
             <h1 className="text-balance text-4xl font-black leading-tight text-slate-950 md:text-6xl">
               从一张诊断表开始，重排鞋厂增长节奏
             </h1>
@@ -72,17 +69,17 @@ export default function Home() {
                 className="object-cover transition duration-700 hover:scale-105"
                 sizes="(max-width: 1024px) 100vw, 45vw"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-slate-950/45 via-transparent to-transparent" />
-              <div className="absolute bottom-5 left-5 right-5 rounded-lg bg-white/95 p-5 text-slate-900 shadow-xl backdrop-blur">
-                <p className="text-sm font-bold text-cyan-700">现场问题，经营语言表达</p>
-                <p className="mt-2 text-xl font-black leading-snug md:text-2xl">把“感觉不顺”变成可追踪的改善任务。</p>
+              <div className="absolute inset-0 bg-gradient-to-t from-slate-950/38 via-transparent to-white/5" />
+              <div className="absolute bottom-5 left-5 flex items-center gap-3 rounded-full bg-white/88 px-4 py-3 text-slate-900 shadow-lg shadow-slate-900/10 backdrop-blur">
+                <span className="h-2.5 w-2.5 rounded-full bg-cyan-500 shadow-[0_0_0_6px_rgba(6,182,212,0.16)]" />
+                <span className="text-sm font-black">诊断清单 · 现场复盘 · 改善追踪</span>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      <section className="bg-white py-20 md:py-24">
+      <section className="section-flow bg-white py-20 md:py-24">
         <div className="container mx-auto max-w-7xl px-6 md:px-8 lg:px-12">
           <div className="mb-12 max-w-3xl animate-rise-soft">
             <h2 className="text-balance text-3xl font-black leading-tight text-slate-950 md:text-4xl">
@@ -93,7 +90,7 @@ export default function Home() {
             {paths.map((item, i) => (
               <div
                 key={item.title}
-                className="group animate-rise-soft rounded-lg border border-slate-200 bg-white p-7 shadow-sm transition duration-300 hover:-translate-y-2 hover:border-cyan-200 hover:shadow-xl hover:shadow-slate-200"
+                className="group animate-cascade rounded-lg border border-slate-200 bg-white p-7 shadow-sm transition duration-500 hover:-translate-y-2 hover:border-cyan-200 hover:shadow-xl hover:shadow-slate-200"
                 style={{ animationDelay: `${i * 120}ms` }}
               >
                 <div className="mb-8 grid h-16 w-16 place-items-center rounded-lg bg-slate-950 text-white transition duration-300 group-hover:-translate-y-1 group-hover:bg-cyan-700">
@@ -107,7 +104,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="overflow-hidden bg-slate-50 py-20 md:py-24">
+      <section className="section-flow overflow-hidden bg-slate-50 py-20 md:py-24">
         <div className="container mx-auto grid max-w-7xl items-center gap-12 px-6 md:px-8 lg:grid-cols-[0.9fr_1.1fr] lg:px-12">
           <div className="relative animate-drift-in overflow-hidden rounded-lg border border-slate-200 bg-white shadow-xl shadow-slate-200">
             <Image

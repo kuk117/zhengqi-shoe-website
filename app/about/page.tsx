@@ -13,7 +13,7 @@ export default function AboutPage() {
 
   return (
     <div className="min-h-screen bg-white text-slate-900">
-      <section className="relative overflow-hidden bg-[linear-gradient(135deg,#f8fafc_0%,#edf7fb_55%,#ffffff_100%)]">
+      <section className="section-flow relative overflow-hidden bg-[linear-gradient(135deg,#f8fafc_0%,#edf7fb_55%,#ffffff_100%)]">
         <Image
           src="https://images.unsplash.com/photo-1557804506-669a67965ba0?w=1920&h=1080&fit=crop&q=80"
           alt="企业咨询会议"
@@ -22,10 +22,7 @@ export default function AboutPage() {
           sizes="100vw"
         />
         <div className="container relative z-10 mx-auto flex min-h-[520px] max-w-7xl items-center px-6 py-16 md:px-8 lg:px-12">
-          <div className="max-w-4xl animate-rise-soft">
-            <p className="mb-5 inline-flex rounded-full border border-slate-200 bg-white px-4 py-2 text-sm font-bold text-cyan-700 shadow-sm">
-              关于正奇
-            </p>
+          <div className="max-w-4xl animate-hero-copy">
             <h1 className="text-balance text-4xl font-black leading-tight text-slate-950 md:text-6xl">
               深耕鞋服制造现场的管理顾问团队
             </h1>
@@ -36,7 +33,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <section className="bg-white py-20 md:py-24">
+      <section className="section-flow bg-white py-20 md:py-24">
         <div className="container mx-auto grid max-w-7xl items-center gap-12 px-6 md:px-8 lg:grid-cols-[0.95fr_1.05fr] lg:px-12">
           <div className="animate-rise-soft">
             <h2 className="text-balance text-3xl font-black leading-tight text-slate-950 md:text-4xl">
@@ -66,7 +63,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <section className="bg-slate-50 py-20 md:py-24">
+      <section className="section-flow bg-slate-50 py-20 md:py-24">
         <div className="container mx-auto max-w-7xl px-6 md:px-8 lg:px-12">
           <div className="mb-12 max-w-3xl animate-rise-soft">
             <h2 className="text-balance text-3xl font-black leading-tight text-slate-950 md:text-4xl">
@@ -75,7 +72,7 @@ export default function AboutPage() {
           </div>
           <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-4">
             {advantages.map(([title, desc], i) => (
-              <div key={title} className="group animate-rise-soft rounded-lg border border-slate-200 bg-white p-6 shadow-sm transition duration-300 hover:-translate-y-2 hover:border-cyan-200 hover:shadow-xl hover:shadow-slate-200" style={{ animationDelay: `${i * 100}ms` }}>
+              <div key={title} className="group animate-cascade rounded-lg border border-slate-200 bg-white p-6 shadow-sm transition duration-500 hover:-translate-y-2 hover:border-cyan-200 hover:shadow-xl hover:shadow-slate-200" style={{ animationDelay: `${i * 100}ms` }}>
                 <div className="mb-8 grid h-12 w-12 place-items-center rounded-lg bg-slate-950 text-sm font-black text-white transition duration-300 group-hover:bg-cyan-700">
                   0{i + 1}
                 </div>

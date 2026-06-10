@@ -67,12 +67,9 @@ export default function ContactPage() {
 
   return (
     <div className="min-h-screen bg-white text-slate-900">
-      <section className="relative overflow-hidden bg-[linear-gradient(135deg,#f8fafc_0%,#ecfeff_48%,#ffffff_100%)]">
+      <section className="section-flow relative overflow-hidden bg-[linear-gradient(135deg,#f8fafc_0%,#ecfeff_48%,#ffffff_100%)]">
         <div className="container mx-auto grid min-h-[440px] max-w-7xl items-center gap-10 px-6 py-16 md:px-8 lg:grid-cols-[0.95fr_1.05fr] lg:px-12">
-          <div className="animate-rise-soft">
-            <p className="mb-5 inline-flex rounded-full border border-slate-200 bg-white px-4 py-2 text-sm font-bold text-cyan-700 shadow-sm">
-              联系我们
-            </p>
+          <div className="animate-hero-copy">
             <h1 className="text-balance text-4xl font-black leading-tight text-slate-950 md:text-6xl">
               先聊清楚问题，再决定怎么改善
             </h1>
@@ -94,7 +91,7 @@ export default function ContactPage() {
         </div>
       </section>
 
-      <section className="bg-white py-20 md:py-24">
+      <section className="section-flow bg-white py-20 md:py-24">
         <div className="container mx-auto max-w-7xl px-6 md:px-8 lg:px-12">
           <div className="grid gap-10 lg:grid-cols-[1.05fr_0.95fr]">
             <div className="animate-rise-soft rounded-lg border border-slate-200 bg-white p-6 shadow-sm md:p-8 lg:p-10">

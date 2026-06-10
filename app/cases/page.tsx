@@ -37,12 +37,9 @@ export default function CasesPage() {
 
   return (
     <div className="min-h-screen bg-white text-slate-900">
-      <section className="relative overflow-hidden bg-[linear-gradient(135deg,#f8fafc_0%,#ecfeff_48%,#ffffff_100%)]">
+      <section className="section-flow relative overflow-hidden bg-[linear-gradient(135deg,#f8fafc_0%,#ecfeff_48%,#ffffff_100%)]">
         <div className="container mx-auto flex min-h-[420px] max-w-7xl items-center px-6 py-16 text-center md:px-8 lg:px-12">
-          <div className="mx-auto max-w-4xl animate-rise-soft">
-            <p className="mb-5 inline-flex rounded-full border border-slate-200 bg-white px-4 py-2 text-sm font-bold text-cyan-700 shadow-sm">
-              改善案例
-            </p>
+          <div className="mx-auto max-w-4xl animate-hero-copy">
             <h1 className="text-balance text-4xl font-black leading-tight text-slate-950 md:text-6xl">
               用真实经营结果验证改善价值
             </h1>
@@ -53,13 +50,13 @@ export default function CasesPage() {
         </div>
       </section>
 
-      <section className="bg-white py-20 md:py-24">
+      <section className="section-flow bg-white py-20 md:py-24">
         <div className="container mx-auto max-w-7xl px-6 md:px-8 lg:px-12">
           <div className="grid gap-6 md:grid-cols-2">
             {cases.map((caseItem, i) => (
               <article
                 key={caseItem.company}
-                className="group animate-rise-soft overflow-hidden rounded-lg border border-slate-200 bg-white shadow-sm transition duration-500 hover:-translate-y-2 hover:border-cyan-200 hover:shadow-xl hover:shadow-slate-200"
+                className="group animate-cascade overflow-hidden rounded-lg border border-slate-200 bg-white shadow-sm transition duration-500 hover:-translate-y-2 hover:border-cyan-200 hover:shadow-xl hover:shadow-slate-200"
                 style={{ animationDelay: `${i * 100}ms` }}
               >
                 <div className="relative h-56 overflow-hidden">
