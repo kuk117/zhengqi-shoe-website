@@ -1,120 +1,96 @@
-'use client';
-
 import Image from 'next/image';
 import BottomCTA from '../components/BottomCTA';
 
-export default function CasesPage() {
-  const cases = [
-    {
-      company: '大型运动品牌代工厂',
-      result: '98.6%验货通过率',
-      improvement: '从85%提升至98.6%',
-      period: '6个月',
-      image: 'https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=900&h=680&fit=crop&q=80',
-    },
-    {
-      company: '中型休闲鞋制造商',
-      result: '生产效率提升40%',
-      improvement: '降本增效15%',
-      period: '8个月',
-      image: 'https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a?w=900&h=680&fit=crop&q=80',
-    },
-    {
-      company: '出口贸易型鞋企',
-      result: '交期达成率99%',
-      improvement: '从75%提升至99%',
-      period: '4个月',
-      image: 'https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=900&h=680&fit=crop&q=80',
-    },
-    {
-      company: '新兴电商鞋类品牌',
-      result: '库存周转提升3倍',
-      improvement: '从60天降至20天',
-      period: '6个月',
-      image: 'https://images.unsplash.com/photo-1549298916-b41d501d3772?w=900&h=680&fit=crop&q=80',
-    },
-  ];
+const cases = [
+  {
+    company: '运动鞋代工型工厂',
+    problem: '订单交期频繁被物料和产线节拍打断，异常响应靠人盯。',
+    result: '建立交付预警表，明确计划、物料、生产三方复盘节奏。',
+    image: 'https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=1300&q=80',
+  },
+  {
+    company: '休闲鞋中型制造商',
+    problem: '瓶颈工序不稳定，班组效率波动大，管理层难以及时判断原因。',
+    result: '围绕瓶颈工序建立日看板和班组复盘动作，减少反复沟通成本。',
+    image: 'https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a?auto=format&fit=crop&w=1300&q=80',
+  },
+  {
+    company: '出口贸易型鞋企',
+    problem: '报价、返工、损耗和库存信息分散，利润压力难以被提前看见。',
+    result: '把成本项和订单复盘连接起来，帮助老板识别优先降本入口。',
+    image: 'https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=1300&q=80',
+  },
+  {
+    company: '鞋类品牌供应链团队',
+    problem: '品牌端希望提升供应商响应速度，但缺少共同语言和跟进机制。',
+    result: '梳理供应商协作流程，让交付、品质和异常处理有固定复盘节点。',
+    image: 'https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&w=1300&q=80',
+  },
+];
 
+export default function CasesPage() {
   return (
-    <div className="min-h-screen bg-white text-slate-900">
-      <section className="section-flow relative overflow-hidden bg-[linear-gradient(135deg,#f8fafc_0%,#ecfeff_48%,#ffffff_100%)]">
-        <div className="container mx-auto flex min-h-[420px] max-w-7xl items-center px-6 py-16 text-center md:px-8 lg:px-12">
-          <div className="mx-auto max-w-4xl animate-hero-copy">
-            <h1 className="text-balance text-4xl font-black leading-tight text-slate-950 md:text-6xl">
-              用真实经营结果验证改善价值
-            </h1>
-            <p className="mt-5 text-pretty text-lg leading-8 text-slate-600 md:text-xl">
-              每个案例都围绕一个明确目标展开：交期、效率、品质、成本或库存周转。
+    <div>
+      <section className="bg-[#f7faf8] py-20 md:py-24">
+        <div className="container-page grid gap-10 lg:grid-cols-[1fr_0.9fr] lg:items-center">
+          <div className="reveal-soft">
+            <h1 className="hero-title text-[#17231f]">用经营问题来组织案例，而不是堆砌数字</h1>
+            <p className="hero-copy mt-7">
+              每个合作都从一个明确问题展开：交付、效率、品质、成本、库存或团队协作。案例数据需以项目现场记录为准。
             </p>
+          </div>
+          <div className="static-image relative min-h-[400px]">
+            <Image
+              src="https://images.unsplash.com/photo-1557804506-669a67965ba0?auto=format&fit=crop&w=1400&q=80"
+              alt="企业经营复盘会议现场"
+              fill
+              className="object-cover"
+              sizes="(max-width: 1024px) 100vw, 45vw"
+            />
           </div>
         </div>
       </section>
 
-      <section className="section-flow bg-white py-20 md:py-24">
-        <div className="container mx-auto max-w-7xl px-6 md:px-8 lg:px-12">
-          <div className="grid gap-6 md:grid-cols-2">
-            {cases.map((caseItem, i) => (
-              <article
-                key={caseItem.company}
-                className="group animate-cascade overflow-hidden rounded-lg border border-slate-200 bg-white shadow-sm transition duration-500 hover:-translate-y-2 hover:border-cyan-200 hover:shadow-xl hover:shadow-slate-200"
-                style={{ animationDelay: `${i * 100}ms` }}
-              >
-                <div className="relative h-56 overflow-hidden">
-                  <Image
-                    src={caseItem.image}
-                    alt={caseItem.company}
-                    fill
-                    className="object-cover transition duration-700 group-hover:scale-105"
-                    sizes="(max-width: 768px) 100vw, 50vw"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-slate-950/75 via-slate-950/20 to-transparent" />
-                  <h2 className="absolute bottom-5 left-5 right-5 text-xl font-black text-white md:text-2xl">
-                    {caseItem.company}
-                  </h2>
-                </div>
-                <div className="grid gap-3 p-6 sm:grid-cols-3">
-                  <div className="rounded-lg bg-cyan-50 p-4">
-                    <p className="text-xs font-bold text-slate-500">核心成果</p>
-                    <p className="mt-2 text-lg font-black text-cyan-800">{caseItem.result}</p>
+      <section className="section-pad bg-white">
+        <div className="container-page grid gap-6 md:grid-cols-2">
+          {cases.map((item) => (
+            <article key={item.company} className="soft-card hover-lift reveal-on-scroll overflow-hidden">
+              <div className="image-hover relative h-56 overflow-hidden">
+                <Image src={item.image} alt={`${item.company}改善案例`} fill className="object-cover" sizes="(max-width: 768px) 100vw, 50vw" />
+              </div>
+              <div className="p-7">
+                <h2 className="text-2xl font-black text-[#17231f]">{item.company}</h2>
+                <div className="mt-5 grid gap-4">
+                  <div className="list-line rounded-lg p-4 pl-5">
+                    <p className="text-sm font-bold text-[#0f766e]">原始问题</p>
+                    <p className="mt-2 leading-7 text-[#5d6d67]">{item.problem}</p>
                   </div>
-                  <div className="rounded-lg bg-slate-50 p-4">
-                    <p className="text-xs font-bold text-slate-500">改善幅度</p>
-                    <p className="mt-2 text-base font-black text-slate-950">{caseItem.improvement}</p>
-                  </div>
-                  <div className="rounded-lg bg-slate-50 p-4">
-                    <p className="text-xs font-bold text-slate-500">项目周期</p>
-                    <p className="mt-2 text-base font-black text-slate-950">{caseItem.period}</p>
+                  <div className="list-line rounded-lg p-4 pl-5">
+                    <p className="text-sm font-bold text-[#0f766e]">改善方向</p>
+                    <p className="mt-2 leading-7 text-[#5d6d67]">{item.result}</p>
                   </div>
                 </div>
-              </article>
-            ))}
-          </div>
+              </div>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <section className="bg-[#edf7f3] py-14">
+        <div className="container-page grid gap-4 text-center md:grid-cols-3">
+          {['先确认问题边界', '再设计改善动作', '最后用复盘验证'].map((item) => (
+            <div key={item} className="soft-card stat-pulse reveal-on-scroll p-6 text-lg font-black text-[#17231f] md:text-xl">
+              {item}
+            </div>
+          ))}
         </div>
       </section>
 
       <BottomCTA
         title="你的现场问题，也可以先变成一份诊断清单"
-        description="说明企业规模、订单结构和当前卡点，我们先判断最值得优先改善的方向，再匹配服务深度。"
+        description="说明企业规模、订单结构和当前卡点，正奇会先判断最值得优先改善的方向，再匹配服务深度。"
         secondaryHref="/services"
         secondaryLabel="查看服务"
-        backgroundImage="https://images.unsplash.com/photo-1549298916-b41d501d3772?w=1800&h=900&fit=crop&q=80"
-        cards={[
-          {
-            label: '交期结果',
-            text: '从订单节奏和异常响应看改善空间。',
-            image: 'https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=600&h=460&fit=crop&q=80',
-          },
-          {
-            label: '效率结果',
-            text: '从瓶颈工序和班组节拍看提升路径。',
-            image: 'https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a?w=600&h=460&fit=crop&q=80',
-          },
-          {
-            label: '库存结果',
-            text: '从补货、周转和订单结构看经营压力。',
-            image: 'https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=600&h=460&fit=crop&q=80',
-          },
-        ]}
       />
     </div>
   );

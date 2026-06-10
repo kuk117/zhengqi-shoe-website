@@ -2,7 +2,13 @@
 
 import { useState } from 'react';
 import Image from 'next/image';
-import BottomCTA from '../components/BottomCTA';
+
+const contactMethods = [
+  ['公司地址', '福建省莆田市荔城区'],
+  ['联系电话', '400-XXX-XXXX'],
+  ['电子邮箱', 'contact@zhengqi-shoe.com'],
+  ['响应时间', '工作日 24 小时内回复'],
+];
 
 export default function ContactPage() {
   const [formData, setFormData] = useState({
@@ -12,204 +18,100 @@ export default function ContactPage() {
     email: '',
     message: '',
   });
+  const [submitting, setSubmitting] = useState(false);
 
-  const contactMethods = [
-    {
-      title: '公司地址',
-      content: '福建省莆田市荔城区',
-      color: 'bg-cyan-50 text-cyan-700',
-      icon: (
-        <svg viewBox="0 0 48 48" className="h-7 w-7" fill="none" aria-hidden="true">
-          <path d="M24 42s14-12.4 14-25A14 14 0 1 0 10 17c0 12.6 14 25 14 25Z" stroke="currentColor" strokeWidth="3" strokeLinejoin="round" />
-          <path d="M24 22a5 5 0 1 0 0-10 5 5 0 0 0 0 10Z" stroke="currentColor" strokeWidth="3" />
-        </svg>
-      ),
-    },
-    {
-      title: '联系电话',
-      content: '138-XXXX-XXXX',
-      color: 'bg-slate-100 text-slate-800',
-      icon: (
-        <svg viewBox="0 0 48 48" className="h-7 w-7" fill="none" aria-hidden="true">
-          <path d="M15 9h18a3 3 0 0 1 3 3v24a3 3 0 0 1-3 3H15a3 3 0 0 1-3-3V12a3 3 0 0 1 3-3Z" stroke="currentColor" strokeWidth="3" />
-          <path d="M21 34h6M20 14h8" stroke="currentColor" strokeWidth="3" strokeLinecap="round" />
-        </svg>
-      ),
-    },
-    {
-      title: '电子邮箱',
-      content: 'contact@zhengqi-shoe.com',
-      color: 'bg-teal-50 text-teal-700',
-      icon: (
-        <svg viewBox="0 0 48 48" className="h-7 w-7" fill="none" aria-hidden="true">
-          <path d="M9 14h30v22H9z" stroke="currentColor" strokeWidth="3" strokeLinejoin="round" />
-          <path d="m10 15 14 12 14-12" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
-        </svg>
-      ),
-    },
-    {
-      title: '响应时间',
-      content: '工作日 24 小时内回复',
-      color: 'bg-amber-50 text-amber-700',
-      icon: (
-        <svg viewBox="0 0 48 48" className="h-7 w-7" fill="none" aria-hidden="true">
-          <path d="M24 40a16 16 0 1 0 0-32 16 16 0 0 0 0 32Z" stroke="currentColor" strokeWidth="3" />
-          <path d="M24 15v10l7 4" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
-        </svg>
-      ),
-    },
-  ];
+  function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    setSubmitting(true);
+    window.setTimeout(() => {
+      setSubmitting(false);
+      alert('已收到您的咨询信息，我们会尽快与您联系。');
+    }, 900);
+  }
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    alert('感谢您的留言！我们会尽快与您联系。');
-  };
+  const fieldClass =
+    'form-field rounded-lg border border-[#cfe3da] px-4 py-3 text-[#17231f] placeholder:text-[#6f7e78] focus:border-[#0f766e] focus:ring-4 focus:ring-teal-100';
 
   return (
-    <div className="min-h-screen bg-white text-slate-900">
-      <section className="section-flow relative overflow-hidden bg-[linear-gradient(135deg,#f8fafc_0%,#ecfeff_48%,#ffffff_100%)]">
-        <div className="container mx-auto grid min-h-[440px] max-w-7xl items-center gap-10 px-6 py-16 md:px-8 lg:grid-cols-[0.95fr_1.05fr] lg:px-12">
-          <div className="animate-hero-copy">
-            <h1 className="text-balance text-4xl font-black leading-tight text-slate-950 md:text-6xl">
-              先聊清楚问题，再决定怎么改善
-            </h1>
-            <p className="mt-5 max-w-2xl text-pretty text-lg leading-8 text-slate-600 md:text-xl">
-              说明企业规模、订单类型、当前卡点和期望目标。我们会先做初步判断，给出适合的沟通路径。
+    <div>
+      <section className="bg-[#f7faf8] py-20 md:py-24">
+        <div className="container-page grid gap-12 lg:grid-cols-[0.92fr_1.08fr] lg:items-center">
+          <div>
+            <h1 className="hero-title text-[#17231f]">先聊清楚问题，再决定怎么改善</h1>
+            <p className="hero-copy mt-7">
+              请说明企业规模、订单类型、当前卡点和期望目标。正奇会先做初步判断，再建议适合的沟通路径。
             </p>
           </div>
-
-          <div className="relative animate-drift-in overflow-hidden rounded-lg border border-slate-200 bg-white shadow-xl shadow-slate-100">
+          <div className="static-image relative min-h-[410px]">
             <Image
-              src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=1000&h=760&fit=crop&q=80"
-              alt="咨询团队沟通现场问题"
-              width={1000}
-              height={760}
-              className="aspect-[4/3] w-full object-cover"
+              src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=1400&q=80"
+              alt="顾问与客户沟通鞋厂管理问题"
+              fill
+              className="object-cover"
               sizes="(max-width: 1024px) 100vw, 45vw"
             />
           </div>
         </div>
       </section>
 
-      <section className="section-flow bg-white py-20 md:py-24">
-        <div className="container mx-auto max-w-7xl px-6 md:px-8 lg:px-12">
-          <div className="grid gap-10 lg:grid-cols-[1.05fr_0.95fr]">
-            <div className="animate-rise-soft rounded-lg border border-slate-200 bg-white p-6 shadow-sm md:p-8 lg:p-10">
-              <h2 className="text-2xl font-black text-slate-950 md:text-3xl">在线留言</h2>
-              <p className="mt-3 text-base leading-7 text-slate-600">
-                请尽量描述当前最影响经营结果的问题，例如交期、效率、品质、库存或团队协作。
+      <section className="section-pad bg-white">
+        <div className="container-page grid items-stretch gap-8 lg:grid-cols-2">
+          <form onSubmit={handleSubmit} className="soft-card flex h-full flex-col p-6 md:p-9">
+            <h2 className="text-2xl font-black text-[#17231f] md:text-3xl">在线留言</h2>
+            <p className="mt-3 leading-7 text-[#5d6d67]">
+              尽量描述最影响经营结果的问题，例如交期、效率、品质、库存、成本或团队协作。
+            </p>
+
+            <div className="mt-8 grid gap-4 md:grid-cols-2">
+              <input required placeholder="您的姓名 *" value={formData.name} onChange={(e) => setFormData({ ...formData, name: e.target.value })} className={fieldClass} />
+              <input placeholder="公司名称" value={formData.company} onChange={(e) => setFormData({ ...formData, company: e.target.value })} className={fieldClass} />
+              <input required placeholder="联系电话 *" value={formData.phone} onChange={(e) => setFormData({ ...formData, phone: e.target.value })} className={fieldClass} />
+              <input type="email" placeholder="电子邮箱" value={formData.email} onChange={(e) => setFormData({ ...formData, email: e.target.value })} className={fieldClass} />
+            </div>
+
+            <textarea
+              rows={7}
+              placeholder="请描述您的需求或当前问题..."
+              value={formData.message}
+              onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+              className={`${fieldClass} mt-4 min-h-[190px] w-full flex-1 resize-none`}
+            />
+
+            <button type="submit" disabled={submitting} className={`btn-primary mt-5 w-full ${submitting ? 'submit-loading' : ''}`}>
+              <span>{submitting ? '正在提交' : '提交咨询'}</span>
+              {!submitting && <span aria-hidden="true">→</span>}
+            </button>
+          </form>
+
+          <aside className="flex h-full flex-col gap-5">
+            <div className="static-image relative min-h-[230px] flex-1">
+              <Image
+                src="https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1200&q=80"
+                alt="顾问团队复盘鞋厂改善问题"
+                fill
+                className="object-cover"
+                sizes="(max-width: 1024px) 100vw, 50vw"
+              />
+            </div>
+
+            <div className="soft-card bg-[#edf7f3] p-6 md:p-7">
+              <h2 className="text-2xl font-black text-[#17231f]">沟通前可以准备</h2>
+              <p className="mt-4 leading-8 text-[#5d6d67]">
+                当前月产能、主要订单类型、最常出现的异常、希望优先改善的经营指标，以及已有的管理报表或现场记录。
               </p>
-
-              <form onSubmit={handleSubmit} className="mt-7 space-y-4">
-                <div className="grid gap-4 md:grid-cols-2">
-                  <input
-                    type="text"
-                    placeholder="您的姓名 *"
-                    required
-                    className="w-full rounded-lg border border-slate-200 px-5 py-3 text-base transition duration-300 placeholder:text-slate-500 hover:border-cyan-300 focus:border-cyan-600 focus:outline-none focus:ring-4 focus:ring-cyan-100"
-                    value={formData.name}
-                    onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                  />
-                  <input
-                    type="text"
-                    placeholder="公司名称"
-                    className="w-full rounded-lg border border-slate-200 px-5 py-3 text-base transition duration-300 placeholder:text-slate-500 hover:border-cyan-300 focus:border-cyan-600 focus:outline-none focus:ring-4 focus:ring-cyan-100"
-                    value={formData.company}
-                    onChange={(e) => setFormData({ ...formData, company: e.target.value })}
-                  />
-                </div>
-
-                <div className="grid gap-4 md:grid-cols-2">
-                  <input
-                    type="tel"
-                    placeholder="联系电话 *"
-                    required
-                    className="w-full rounded-lg border border-slate-200 px-5 py-3 text-base transition duration-300 placeholder:text-slate-500 hover:border-cyan-300 focus:border-cyan-600 focus:outline-none focus:ring-4 focus:ring-cyan-100"
-                    value={formData.phone}
-                    onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                  />
-                  <input
-                    type="email"
-                    placeholder="电子邮箱"
-                    className="w-full rounded-lg border border-slate-200 px-5 py-3 text-base transition duration-300 placeholder:text-slate-500 hover:border-cyan-300 focus:border-cyan-600 focus:outline-none focus:ring-4 focus:ring-cyan-100"
-                    value={formData.email}
-                    onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                  />
-                </div>
-
-                <textarea
-                  placeholder="请描述您的需求或问题..."
-                  rows={5}
-                  className="w-full resize-none rounded-lg border border-slate-200 px-5 py-3 text-base transition duration-300 placeholder:text-slate-500 hover:border-cyan-300 focus:border-cyan-600 focus:outline-none focus:ring-4 focus:ring-cyan-100"
-                  value={formData.message}
-                  onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                />
-
-                <button
-                  type="submit"
-                  className="w-full rounded-lg bg-slate-950 py-4 text-lg font-black text-white shadow-lg shadow-slate-200 transition duration-300 hover:-translate-y-1 hover:bg-cyan-700 active:scale-[0.99]"
-                >
-                  提交留言 →
-                </button>
-              </form>
             </div>
 
-            <div className="space-y-5 animate-drift-in">
-              <div className="rounded-lg border border-slate-200 bg-slate-50 p-6 md:p-8">
-                <h2 className="text-2xl font-black text-slate-950 md:text-3xl">联系方式</h2>
-                <div className="mt-6 grid gap-4 sm:grid-cols-2">
-                  {contactMethods.map((item, i) => (
-                    <div
-                      key={item.title}
-                      className="group rounded-lg border border-slate-200 bg-white p-5 transition duration-300 hover:-translate-y-1 hover:border-cyan-200 hover:shadow-lg hover:shadow-slate-100"
-                      style={{ animationDelay: `${i * 100}ms` }}
-                    >
-                      <div className={`mb-5 grid h-12 w-12 place-items-center rounded-lg ${item.color} transition duration-300 group-hover:scale-105`}>
-                        {item.icon}
-                      </div>
-                      <h3 className="text-base font-black text-slate-950">{item.title}</h3>
-                      <p className="mt-2 text-sm font-medium leading-6 text-slate-600">{item.content}</p>
-                    </div>
-                  ))}
+            <div className="grid gap-4 sm:grid-cols-2">
+              {contactMethods.map(([title, content]) => (
+                <div key={title} className="list-line rounded-lg border border-[#d9e6df] bg-white p-5 pl-6 shadow-sm">
+                  <h3 className="font-black text-[#17231f]">{title}</h3>
+                  <p className="mt-2 text-sm leading-6 text-[#5d6d67]">{content}</p>
                 </div>
-              </div>
-
-              <div className="rounded-lg border border-cyan-100 bg-cyan-50 p-6">
-                <p className="text-sm font-black text-cyan-800">沟通前可以准备</p>
-                <p className="mt-3 text-base leading-7 text-slate-700">
-                  当前订单类型、月产能、最常出现的异常、希望优先改善的经营指标。
-                </p>
-              </div>
+              ))}
             </div>
-          </div>
+          </aside>
         </div>
       </section>
-
-      <BottomCTA
-        title="把复杂问题先讲清楚，方案才会准确"
-        description="我们会围绕企业现状做初步判断，所有沟通内容仅用于诊断和方案建议。"
-        primaryLabel="提交咨询"
-        secondaryHref="/about"
-        secondaryLabel="了解正奇"
-        backgroundImage="https://images.unsplash.com/photo-1552664730-d307ca884978?w=1800&h=900&fit=crop&q=80"
-        cards={[
-          {
-            label: '准备现状',
-            text: '企业规模、月产能、订单类型和主要客户。',
-            image: 'https://images.unsplash.com/photo-1556761175-b413da4baf72?w=600&h=460&fit=crop&q=80',
-          },
-          {
-            label: '说明卡点',
-            text: '交期、效率、品质、成本里最影响经营的一项。',
-            image: 'https://images.unsplash.com/photo-1557804506-669a67965ba0?w=600&h=460&fit=crop&q=80',
-          },
-          {
-            label: '确认目标',
-            text: '先明确希望三个月内看到什么变化。',
-            image: 'https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=600&h=460&fit=crop&q=80',
-          },
-        ]}
-      />
     </div>
   );
 }
